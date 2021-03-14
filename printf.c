@@ -10,7 +10,7 @@
 int _printf(const char *format1,...)
 {
 	char *format=(char *) format1;
-	char *buffer = NULL;
+	char *buffer = NULL, *format_pos;
 	va_list param_list;
 	int index_format, return_steps;
 
@@ -26,35 +26,20 @@ int _printf(const char *format1,...)
 
 	for (index_format = 0; format[index_format]; index_format++)
 	{
-		/* valida caracte de escape para %*/
-		if (format[index_format] != '%')
-		{
-			if (format[index_format] == '\\' && format[index_format + 1] == '%')
-			{
-				_strncat(buffer, format + index_format + 1, 1);
-				index_format++;
-			}
-			else
-			{
-				_strncat(buffer, format + index_format, 1);
-			}
-		}
+		format_pos = format + index_format;
+		if ( *format_pos == '%' && *(format_pos + 1) == '%')
+			_strncat(buffer, format + (++index_format), 1);
+		else if (*format_pos != '%')
+			_strncat(buffer, format_pos, 1);
 		else
 		{
-			/*if (format[index_format + 1] == '%')
-			{
-				_strncat(buffer, format + index_format + 1, 1);
-				index_format++;
-			}
+			return_steps = steps(format_pos, param_list, buffer);
+			if (return_steps == 0)
+				_strncat(buffer, format_pos, 1);
 			else
-			{*/
-				return_steps = steps(format + index_format, param_list, buffer);
-				if (return_steps == 0)
-					_strncat(buffer, format + index_format, 1);
-				else
-					index_format += (return_steps);
-			/*}*/
+				index_format += (return_steps);
 		}
+
 	}
 
 	va_end(param_list);

@@ -8,7 +8,7 @@
  *
  * Return: pointer tocopy_function selected
  */
-char *(*select_func(char specifier))(char *, va_list , char *)
+char *(*select_func(char specifier))(char *, char *, va_list)
 {
 	copy_func array_copy_func[] = {
 		{'s', copy_string},
@@ -20,12 +20,11 @@ char *(*select_func(char specifier))(char *, va_list , char *)
 
 	int index = 0;
 
-	while (specifier == array_copy_func[index].esp)
+	while (specifier != array_copy_func[index].esp)
 	{
-		return (array_copy_func[index].ptr_func);
 		index++;
 	}
-	return (NULL);
+	return (array_copy_func[index].ptr_func);
 }
 
 
@@ -36,14 +35,14 @@ char *(*select_func(char specifier))(char *, va_list , char *)
  *
  * Return: pointer tocopy_function selected
  */
-char *clean_format(char *ptr_to_percent, char *buffer_format, char specifier)
+char *clean_format(char *ptr_to_percent, char *buffer_format, int index_spc)
 {
 	int index, index_buffer = 4, id_sec = 0, has_point = 0;
 
 	buffer_format[0] = buffer_format[1] = '0';
 	buffer_format[2] = buffer_format[3] = '0';
 
-	for (index = 1; ptr_to_percent[index] != specifier; index++)
+	for (index = 1; index < index_spc; index++)
 	{
 		switch (ptr_to_percent[index])
 		{

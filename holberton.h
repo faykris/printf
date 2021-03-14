@@ -11,9 +11,11 @@ int _printf(const char *format,...);
 
 int steps(char *ptr_to_percent, va_list param_list, char *buffer);
 
-char *(*select_func(char specifier))(char *, va_list, char *);
+char *(*select_func(char specifier))(char *, char *, va_list );
 
-char *clean_format(char *ptr_to_percent, char *buffer_format, char specifier);
+char *clean_format(char *ptr_to_percent, char *buffer_format, int index_spc);
+
+void string_copy(char *buffer, char *format_buffer, char specifier, va_list param_list);
 
 int _write(char *buffer);
 
@@ -21,13 +23,13 @@ int _strlen(char *string);
 
 char *_strncat(char *, char *, int n);
 
-char *copy_string(char *ptr_to_percent, va_list param_list, char *buffer);
+char *copy_string(char *sbuffer, char *format, va_list param_list);
 
-char *copy_char(char *ptr_to_percent, va_list param_list, char *buffer);
+char *copy_char(char *sbuffer, char *format, va_list param_list);
 
-char *copy_int(char *ptr_to_percent, va_list param_list, char *buffer);
+char *copy_int(char *sbuffer, char *format, va_list param_list);
 
-char *copy_float(char *ptr_to_percent, va_list param_list, char *buffer);
+char *copy_float(char *sbuffer, char *format, va_list param_list);
 
 /**
  * cp_func - 
@@ -38,7 +40,7 @@ char *copy_float(char *ptr_to_percent, va_list param_list, char *buffer);
 struct cp_func
 {
 	char esp;
-	char *(*ptr_func)(char *ptr_to_percent, va_list param_list, char *buffer);
+	char *(*ptr_func)(char *sbuffer, char *format, va_list param_list);
 };
 
 typedef struct cp_func copy_func;

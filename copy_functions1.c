@@ -8,48 +8,30 @@
  *
  * Return: pointer to secondary buffer
  */
-char *copy_string(char *ptr_to_percent, va_list param_list,char *buffer)
+char *copy_string(char *sbuffer, char *format, va_list param_list)
 {
-	char *sbuffer = malloc(1024);
-	char *format_ptr, *format_buffer;
 
-	if (sbuffer == NULL)
-	{
-		free (buffer);
-		exit (98);
-	}
-	sbuffer[0]='\0';
-
-	format_buffer = malloc(250);
-	if (format_buffer == NULL)
-	{
-		free (sbuffer);
-		free (buffer);
-		exit (98);
-	}
-	format_buffer[0]='\0';
-
-	format_ptr = clean_format(ptr_to_percent, format_buffer, 's');
-	if (format_ptr == NULL)
-	{
-		free (sbuffer);
-		free (format_buffer);
-		return (NULL);
-	}
 	_strncat(sbuffer, va_arg(param_list, char *), 1024);
 
 	/* aply format */
 
-	free (format_buffer);
 	return (sbuffer);
 }
 
-char *copy_char(char *ptr_to_percent, va_list param_list, char *buffer)
+char *copy_char(char *sbuffer, char *format, va_list param_list)
+{
+		_strncat(sbuffer, va_arg(param_list, char *), 1);
+
+	/* aply format */
+
+	return (sbuffer);
+}
+
+char *copy_int(char *sbuffer, char *format, va_list param_list)
 {
 
 }
-
-char *copy_int(char *ptr_to_percent, va_list param_list, char *buffer)
+char *copy_float(char *sbuffer, char *format, va_list param_list)
 {
 
 }
