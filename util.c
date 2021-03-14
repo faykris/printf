@@ -135,3 +135,25 @@ char *_strncat(char *dest, char *src, int n)
 	return (dest);
 
 }
+
+/**
+ * int_to_str - changes to string a number.
+ * @sbuffer: secondary buffer to add numbers.
+ * @number: number to convert to string.
+ *
+ * Return: None.
+ */
+void int_to_str(char *sbuffer, int number)
+{
+        int copy_number = number;
+        int index, length;
+
+        for (length = 0; copy_number; length++)
+        {
+                copy_number/10;
+        }
+        for (index = 0; index < length; index++)
+        {
+                sbuffer[index] = (char)(number % 10);
+        }
+}

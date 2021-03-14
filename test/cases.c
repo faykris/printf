@@ -2,8 +2,6 @@
 
 void print_all(const char * const format, ...);
 
-
-
 void test_string(void)
 {
 	int a= _printf("i=%sh\n","Hola Mundo");
@@ -28,8 +26,8 @@ void test_int(void)
 {
 	int len = _printf("Percent:[%%]\n");
     int len2 = printf("Percent:[%%]\n");
-	_printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
+	_printf("Length:[%i]\n", len);
+    printf("Length:[%i]\n", len2);
 	_printf("Negative:[%d]\n", -762534);
     printf("Negative:[%d]\n", -762534);
 	_printf("Len:[%d]\n", len);

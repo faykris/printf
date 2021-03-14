@@ -9,7 +9,7 @@ int main(void)
 {
     /* s c d i u o xX p r */
     /*char txt[] = "hola\n";*/
-    char whatTest[] = "s";
+    char whatTest[] = "i";
     int i = 0;
 
    while (whatTest[i])
@@ -23,8 +23,11 @@ int main(void)
                 test_char();
                 break;
             case 'd':
-                test_char();
+                test_int();
                 break;
+	case 'i':
+		test_int();
+		break;
             case 'p':
                 test_hex();
                 break;

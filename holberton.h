@@ -31,6 +31,8 @@ char *copy_int(char *sbuffer, char *format, va_list param_list);
 
 char *copy_float(char *sbuffer, char *format, va_list param_list);
 
+void int_to_str(char *sbuffer, int number);
+
 /**
  * cp_func - 
  *
