@@ -10,7 +10,7 @@
  */
 int steps(char *ptr_to_percent, va_list param_list, char *buffer)
 {
-	char sp_chars[] = "scdi";
+	char sp_chars[] = "scdiS";
 	int index_format, index_sp_chars;
 	char *sbuffer, *format_buffer, *fbc;
 

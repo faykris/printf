@@ -21,7 +21,11 @@ int _write(char *buffer);
 
 int _strlen(char *string);
 
+void dec_to_hex(int dec, char *str_hex, int toMayus);
+
 char *_strncat(char *, char *, int n);
+
+void rev_string(char *s);
 
 char *copy_string(char *sbuffer, char *format, va_list param_list);
 
@@ -29,7 +33,11 @@ char *copy_char(char *sbuffer, char *format, va_list param_list);
 
 char *copy_int(char *sbuffer, char *format, va_list param_list);
 
+char *copy_binary(char *sbuffer, char *format, va_list param_list);
+
 char *copy_float(char *sbuffer, char *format, va_list param_list);
+
+char *copy_custom_string(char *sbuffer, char *format, va_list param_list);
 
 /**
  * cp_func - 

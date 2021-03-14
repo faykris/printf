@@ -15,6 +15,8 @@ char *(*select_func(char specifier))(char *, char *, va_list)
 		{'c', copy_char},
 		{'d', copy_int},
 		{'i', copy_int},
+		{'b', copy_binary},
+		{'S', copy_custom_string},
 		{'f', copy_float}
 	};
 
@@ -134,4 +136,48 @@ char *_strncat(char *dest, char *src, int n)
 
 	return (dest);
 
+}
+void dec_to_hex(int dec, char *str_hex, int toMayus)
+{
+	char letters[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	int cociente = dec;
+	int residuo = 0;
+	int index_str=0;
+
+	while (cociente)
+	{
+		residuo = cociente % 16;
+		cociente /= 16;
+		if (residuo > 9 && toMayus)
+			str_hex[index_str++] = letters[residuo] - 32;
+		else
+			str_hex[index_str++] = letters[residuo];
+	}
+	str_hex[index_str++] = '\0';
+	rev_string(str_hex);
+}
+
+/**
+ * rev_string - reverses a string.
+ *
+ * @s: pointer to string.
+ * Return: void.
+ */
+void rev_string(char *s)
+{
+
+	int len = _strlen(s);
+	int index = 0;
+	char hold;
+
+	len--;
+	while (index < len)
+	{
+		hold = s[index];
+		s[index] = s[len];
+		s[len] = hold;
+
+		index++;
+		len -= 2;
+	}
 }
