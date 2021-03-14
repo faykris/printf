@@ -148,16 +148,29 @@ void int_to_str(char *sbuffer, int number)
         int copy_number = number;
         int index, length, magnitud = 1;
 
-	for (length = 0; (copy_number / 10) == 0; length++)
+	if (number < 0)
 	{
-		copy_number / 10;
-		magnitud * 10;		
+		copy_number = number * -1;
+	}
+	for (length = 0; copy_number / 10; length++)
+	{
+		copy_number = copy_number / 10;
+		magnitud = magnitud * 10;		
 	}
 	length++;
 	for (index = 0; index < length; index++)
 	{
-		sbuffer[index] = (char)(number / magnitud);
-		number = number % magnitud;
-		magnitud / 10;
+		if (index == 0 && number < 0)
+		{
+			sbuffer[0] = '-';
+			number = number * -1;
+			length++;
+		}
+		else
+		{
+			sbuffer[index] = (number / magnitud) + '0';
+			number = number % magnitud;
+			magnitud = magnitud / 10;
+		}
 	}
 }
