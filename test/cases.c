@@ -25,13 +25,15 @@ void test_char(void)
 void test_int(void)
 {
 	int len = _printf("Percent:[%%]\n");
-    int len2 = printf("Percent:[%%]\n");
+	int len2 = printf("Percent:[%%]\n");
 	_printf("Length:[%i]\n", len);
-    printf("Length:[%i]\n", len2);
+	printf("Length:[%i]\n", len2);
 	_printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
+	printf("Negative:[%d]\n", -762534);
 	_printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
+	printf("Len:[%d]\n", len2);
+	_printf("Len:[%d]\n", 0);
+	printf("Len:[%d]\n", 0);
 }
 
 void test_address(void)

@@ -173,4 +173,5 @@ void int_to_str(char *sbuffer, int number)
 			magnitud = magnitud / 10;
 		}
 	}
+	sbuffer[index] = '\0';
 }
