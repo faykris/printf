@@ -32,6 +32,10 @@ int main()
 	return (0);
 }
 ```
+```
+Example1: Printing a simple text with
+
+```
 ### Print some concatenated strings
 ```C
 #include "holberton.h"
@@ -42,6 +46,10 @@ int main()
 
 	return (0);
 }
+```
+```
+Example1: Printing a simple text with another text
+
 ```
 ### Only a text with variables
 ```C
@@ -56,6 +64,10 @@ int main()
 	return (0);
 }
 ```
+```
+Example2: Printing a simple text with another text and other
+
+```
 ### print a integer number
 ```C
 #include "holberton.h"
@@ -64,12 +76,13 @@ int main()
 {
 	int num1 = 6; 
 
-	_printf("Example3: Printing a integer 6 as %d", num1);
+	_printf("Example3: Printing a integer 6 as %d\n", num1);
 
 	return (0);
 }
 ```
 ```
 Printing a integer 6 as 6
+
 ```
 ##How My Code Works?
