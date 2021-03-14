@@ -28,10 +28,24 @@ char *copy_char(char *sbuffer, char *format, va_list param_list)
 	return (sbuffer);
 }
 
+/**
+ * copy_int - copies the number in a secondary buffer.
+ *
+ * @sbuffer: pointer to string.
+ * @format: format of the string.
+ * @param_list: list of parameters entering variadic.
+ *
+ * Return: pointer to secondary buffer.
+ */
 char *copy_int(char *sbuffer, char *format, va_list param_list)
 {
+	int_to_str(sbuffer, va_arg(param_list, int));
 
+	return (sbuffer);
 }
+
+char *copy_float(char *sbuffer, char *format, va_list param_list)
+{
 
 
 
