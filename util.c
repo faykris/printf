@@ -146,14 +146,17 @@ char *_strncat(char *dest, char *src, int n)
 void int_to_str(char *sbuffer, int number)
 {
         int copy_number = number;
-        int index, length;
+        int index, length, magnitud = 1;
 
-        for (length = 0; copy_number; length++)
-        {
-                copy_number/10;
-        }
-        for (index = 0; index < length; index++)
-        {
-                sbuffer[index] = (char)(number % 10);
-        }
+	for (length = 0; copy_number/10; length++)
+	{
+		copy_number/10;
+		magnitud * 10;		
+	}
+	length++;
+	for (index = 0; index < length; index++)
+	{
+		sbuffer[index] = (char)(number / magnitud);
+		magnitud / 10;
+	}
 }
