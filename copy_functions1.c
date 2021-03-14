@@ -20,7 +20,8 @@ char *copy_string(char *sbuffer, char *format, va_list param_list)
 
 char *copy_char(char *sbuffer, char *format, va_list param_list)
 {
-		_strncat(sbuffer, va_arg(param_list, char *), 1);
+	char s = va_arg(param_list, char *);
+		_strncat(sbuffer, &s, 1);
 
 	/* aply format */
 
@@ -46,5 +47,5 @@ char *copy_int(char *sbuffer, char *format, va_list param_list)
 char *copy_float(char *sbuffer, char *format, va_list param_list)
 {
 
-}
+
 
