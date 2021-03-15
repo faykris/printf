@@ -36,6 +36,11 @@ int _printf(const char *format, ...)
 			ret_steps = find_format(format_pos, param_list, buffer);
 			if (ret_steps == 0)
 				_strncat(buffer, format_pos, 1);
+			else if (ret_steps == -1)
+			{
+				_write(buffer);
+				return (-1);
+			}
 			else
 				index_format += (ret_steps);
 		}
@@ -56,18 +61,16 @@ int _printf(const char *format, ...)
  */
 int find_format(char *ptr_to_percent, va_list param_list, char *buffer)
 {
-	char sp_chars[] = "%scdiSb";
+	char *format_buffer, *fbc, sp_chars[] = "%scdiSb";
 	int index_format, index_sp_chars;
-	char *format_buffer, *fbc;
 
-	for (index_format = 1; ptr_to_percent[index_format]; index_format++)
+	for (index_format = 1; 1 ; index_format++)
 	{/*itera hasta encontrar un caracter especial o un caeacter nulo*/
 		for (index_sp_chars = 0; sp_chars[index_sp_chars]; index_sp_chars++)
 		{/*itera para cada caracter especial */
-
-			if (ptr_to_percent[index_format] == sp_chars[index_sp_chars])
+			if (ptr_to_percent[index_format] == sp_chars[index_sp_chars] ||
+				!ptr_to_percent[index_format])
 			{/*hubo una coincidencia con un caracter especial*/
-
 				format_buffer = malloc(250);
 				if (format_buffer == NULL)
 				{
@@ -75,11 +78,12 @@ int find_format(char *ptr_to_percent, va_list param_list, char *buffer)
 					exit(98);
 				}
 				format_buffer[0] = '\0';
-
 				fbc = get_format(ptr_to_percent, format_buffer, index_format);
-				if (fbc == NULL)
+				if (fbc == NULL || !ptr_to_percent[index_format])
 				{
 					free(format_buffer);
+					if (!ptr_to_percent[index_format])
+						return (-1);
 					return (0);
 				}
 				if (sp_chars[index_sp_chars] == '%')
@@ -87,12 +91,10 @@ int find_format(char *ptr_to_percent, va_list param_list, char *buffer)
 					_strncat(buffer, "%", 1024);
 					return (index_format);
 				}
-
 				append_arg(buffer, format_buffer, sp_chars[index_sp_chars], param_list);
 				return (index_format);
 			}
 		}
-	}
-	/*no se encontro caracter especial*/
+	} /*no se encontro caracter especial*/
 	return (0);
 }
