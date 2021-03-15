@@ -21,7 +21,9 @@ int _write(char *buffer);
 
 int _strlen(char *string);
 
-void dec_to_hex(int dec, char *str_hex, int toMayus);
+void string_toupper(char *str);
+
+void dec_converter(int dec, char *str_converted, int base);
 
 char *_strncat(char *, char *, int n);
 

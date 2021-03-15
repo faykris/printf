@@ -138,24 +138,59 @@ char *_strncat(char *dest, char *src, int n)
 
 }
 
-void dec_to_hex(int dec, char *str_hex, int toMayus)
+/**
+ * string_toupper - anges all lowercase letters of a string to uppercase.
+ *
+ * @str: pointer to array of chars.
+ *
+ * Return: pointer to *.
+ */
+void string_toupper(char *str)
 {
-	char letters[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
-	int cociente = dec;
-	int residuo = 0;
-	int index_str=0;
+	int i = 0;
 
-	while (cociente)
+	while (*(str + i) != '\0')
 	{
-		residuo = cociente % 16;
-		cociente /= 16;
-		if (residuo > 9 && toMayus)
-			str_hex[index_str++] = letters[residuo] - 32;
-		else
-			str_hex[index_str++] = letters[residuo];
+		if (*(str + i) >= 'a' && *(str + i) <= 'z')
+			*(str + i) += ('A' - 'a');
+		i++;
 	}
-	str_hex[index_str++] = '\0';
-	rev_string(str_hex);
+}
+
+/**
+ * dec_converter - changes to string a number.
+ * @str_converted: secondary buffer to add numbers.
+ * @dec: number to convert to string.
+ * @base: base to convert number
+ *
+ * Return: None.
+ */
+void dec_converter(int dec, char *str_converted, int base)
+{
+	int index = 0;
+	int cociente = dec;
+	char letters[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	int inNegative = 0;
+
+	if (cociente == 0)
+		str_converted[index++] = '0';
+
+	if (str_converted[0] == '-')
+		inNegative = 1;
+
+    while (cociente)
+	{
+		if (cociente < 0)
+            str_converted[index++] = letters[-(cociente % base)];
+        else
+            str_converted[index++] = letters[cociente % base];
+		cociente /= base;
+	}
+	if (inNegative)
+		str_converted[index++] = '-';
+
+	str_converted[index] = '\0';
+	rev_string(str_converted);
 }
 
 /**
@@ -172,6 +207,9 @@ void rev_string(char *s)
 	char hold;
 
 	len--;
+	if (s[0] == '-')
+		index = 1;
+
 	while (index < len)
 	{
 		hold = s[index];
@@ -179,47 +217,6 @@ void rev_string(char *s)
 		s[len] = hold;
 
 		index++;
-		len -= 2;
+		len--;
 	}
-}
-
-/**
- * int_to_str - changes to string a number.
- * @sbuffer: secondary buffer to add numbers.
- * @number: number to convert to string.
- *
- * Return: None.
- */
-void int_to_str(char *sbuffer, int number)
-{
-        int copy_number = number;
-        int index, length, magnitud = 1;
-
-	if (number < 0)
-	{
-		copy_number = number * -1;
-	}
-	for (length = 0; copy_number / 10; length++)
-	{
-		copy_number = copy_number / 10;
-		magnitud = magnitud * 10;		
-	}
-	length++;
-	for (index = 0; index < length; index++)
-	{
-		if (index == 0 && number < 0)
-		{
-			sbuffer[0] = '-';
-			number = number * -1;
-			length++;
-		}
-		else
-		{
-			sbuffer[index] = (number / magnitud) + '0';
-			number = number % magnitud;
-			magnitud = magnitud / 10;
-		}
-	}
-	sbuffer[index] = '\0';
-
 }

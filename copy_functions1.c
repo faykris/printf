@@ -39,7 +39,12 @@ char *copy_char(char *sbuffer, char *format, va_list param_list)
  */
 char *copy_int(char *sbuffer, char *format, va_list param_list)
 {
-	int_to_str(sbuffer, va_arg(param_list, int));
+	int number= va_arg(param_list, int);
+
+	if (number < 0)
+		sbuffer[0] = '-';
+
+	dec_converter(number, sbuffer, 10);
 
 	return (sbuffer);
 }
