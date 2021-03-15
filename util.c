@@ -1,95 +1,5 @@
 #include "holberton.h"
 
-
-/**
- * select_func -
- *
- * @specifier: pointer to string.
- *
- * Return: pointer tocopy_function selected
- */
-char *(*select_func(char specifier))(char *, char *, va_list)
-{
-	copy_func array_copy_func[] = {
-		{'s', copy_string},
-		{'c', copy_char},
-		{'d', copy_int},
-		{'i', copy_int},
-		{'b', copy_binary},
-		{'S', copy_custom_string},
-		{'f', copy_float}
-	};
-
-	int index = 0;
-
-	while (specifier != array_copy_func[index].esp)
-	{
-		index++;
-	}
-	return (array_copy_func[index].ptr_func);
-}
-
-
-/**
- * clean_format -
- *
- * @specifier: pointer to string.
- *
- * Return: pointer tocopy_function selected
- */
-char *clean_format(char *ptr_to_percent, char *buffer_format, int index_spc)
-{
-	int index, index_buffer = 4, id_sec = 0, has_point = 0;
-
-	buffer_format[0] = buffer_format[1] = '0';
-	buffer_format[2] = buffer_format[3] = '0';
-
-	for (index = 1; index < index_spc; index++)
-	{
-		switch (ptr_to_percent[index])
-		{
-			case '-':
-				if (id_sec)
-					return (NULL);
-				buffer_format[0] = '1';
-				break;
-			case '+':
-				if (id_sec)
-					return (NULL);
-				buffer_format[1] = '1';
-				break;
-			case ' ':
-				if (id_sec)
-					return (NULL);
-				buffer_format[2] = '1';
-				break;
-			case '.':
-				if (has_point)
-					return (NULL);
-				buffer_format[index_buffer++] = '.';
-				id_sec = 1;
-				has_point = 1;
-				break;
-			case '0':
-				if (id_sec)
-					buffer_format[index_buffer++] = '0';
-				else
-					buffer_format[3] = '1';
-				break;
-			default:
-				if ('0' < ptr_to_percent[index] && ptr_to_percent[index] <= '9')
-				{
-					id_sec = 1;
-					buffer_format[index_buffer++] = ptr_to_percent[index];
-				}
-				else
-					return (NULL);
-		}
-	}
-	buffer_format[index_buffer]= '\0';
-	return (buffer_format);
-}
-
 /**
  * _strlen - returns the length of a string.
  *
@@ -169,7 +79,7 @@ void dec_converter(int dec, char *str_converted, int base)
 {
 	int index = 0;
 	int cociente = dec;
-	char letters[] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	char letters[] = {"0123456789abcdef"};
 	int inNegative = 0;
 
 	if (cociente == 0)
@@ -178,12 +88,12 @@ void dec_converter(int dec, char *str_converted, int base)
 	if (str_converted[0] == '-')
 		inNegative = 1;
 
-    while (cociente)
+	while (cociente)
 	{
 		if (cociente < 0)
-            str_converted[index++] = letters[-(cociente % base)];
-        else
-            str_converted[index++] = letters[cociente % base];
+			str_converted[index++] = letters[-(cociente % base)];
+		else
+			str_converted[index++] = letters[cociente % base];
 		cociente /= base;
 	}
 	if (inNegative)
