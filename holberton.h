@@ -45,11 +45,11 @@ void int_to_str(char *sbuffer, int number);
 
 /**
  * struct cp_func - structure holds data type and pointer.
- * @esp: especial character.
+ * @esp: especial character (s, f, i, d, ...).
  * @ptr_func: pointer to function with two pointers and va_list as paramenter.
  *
- * Description: structure that contains in the first position the char (s, f,
- * i, d) and in the second one the pointer that manipulates that type of char.
+ * Description: structure that contains in the first position the char especial
+ * and in the second one the pointer that manipulates that type of char.
  */
 struct cp_func
 {
