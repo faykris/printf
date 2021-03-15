@@ -18,7 +18,7 @@
 
 ## How It Works?
 In this function we define a first parameter where we have the data to print and it will be verified if it has any identifier operator, the other parameters will correspond to the identifier operators found in the first.
-### _printf fuunction:
+### _printf function:
 ```C
 int _printf(const char *format, ...);
 ```
@@ -187,5 +187,6 @@ Contains the logic to use in each step the _printf process, using the different 
 > Made with ❤ by  [Cristian Pinzón](https://github.com/faykris)。
 
 ![](https://www.holbertonschool.com/holberton-logo.png)
+
 **Holberton School - Cohort 14 BOG**
 *Colombia 2021*
