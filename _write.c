@@ -2,7 +2,7 @@
 
 /**
  * _write - writes the characters to stdout.
- * @buffer: The string to print
+ * @buffer: The string to print.
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
