@@ -73,7 +73,7 @@ int main()
 }
 ```
 ```
-Example6: The binary value of 68 is 1000100Example6: The binary value of 68 is 1000100
+Example6: The binary value of 68 is 1000100
 
 ```
 This identy format doesn't have the original function, converts a unsigned integer value to a binary and print it replacing the %b characters.
