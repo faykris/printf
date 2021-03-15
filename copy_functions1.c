@@ -49,4 +49,3 @@ char *copy_int(char *sbuffer, char *format, va_list param_list)
 	return (sbuffer);
 }
 
-
