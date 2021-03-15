@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			_strncat(buffer, format_pos, 1);
 		else
 		{
-			ret_steps = steps(format_pos, param_list, buffer);
+			ret_steps = find_format(format_pos, param_list, buffer);
 			if (ret_steps == 0)
 				_strncat(buffer, format_pos, 1);
 			else
@@ -44,83 +44,55 @@ int _printf(const char *format, ...)
 	return (_write(buffer));
 }
 
-/**
- * select_func - Select fuctions depending data type
- *
- * @specifier: pointer to string.
- *
- * Return: pointer tocopy_function selected
- */
-char *(*select_func(char specifier))(char *, char *, va_list)
-{
-	copy_func array_copy_func[] = {
-		{'s', copy_string},
-		{'c', copy_char},
-		{'d', copy_int},
-		{'i', copy_int},
-		{'b', copy_binary},
-		{'S', copy_custom_string},
-		{'f', copy_float}
-	};
-
-	int index = 0;
-
-	while (specifier != array_copy_func[index].esp)
-	{
-		index++;
-	}
-	return (array_copy_func[index].ptr_func);
-}
 
 /**
- * clean_format - clear value of format
+ * find_format - check for valid format in the string
  *
- * @ptr_to_percent: pointer with percent
- * @buffer_format: pointer buffer format
- * @index_spc: integer indicates special character
+ * @ptr_to_percent:pointer to % simbol in format string
+ * @param_list: list of parameters entering variadic.
+ * @buffer: pointer to response string
  *
- * Return: pointer tocopy_function selected
+ * Return: number of processed format characters
  */
-char *clean_format(char *ptr_to_percent, char *buffer_format, int index_spc)
+int find_format(char *ptr_to_percent, va_list param_list, char *buffer)
 {
-	int index, index_buffer = 4, id_sec = 0, has_point = 0, index_val;
-	char val_chars[] = "-+ 0";
+	char sp_chars[] = "%scdiSb";
+	int index_format, index_sp_chars;
+	char *format_buffer, *fbc;
 
-	buffer_format[0] = buffer_format[1] = '0';
-	buffer_format[2] = buffer_format[3] = '0';
-	for (index = 1; index < index_spc; index++)
-	{
-		for (index_val = 0; val_chars[index_val]; index_val++)
-		{
-			if (ptr_to_percent[index] == val_chars[index_val])
-			{
-				if (id_sec)
+	for (index_format = 1; ptr_to_percent[index_format]; index_format++)
+	{/*itera hasta encontrar un caracter especial o un caeacter nulo*/
+		for (index_sp_chars = 0; sp_chars[index_sp_chars]; index_sp_chars++)
+		{/*itera para cada caracter especial */
+
+			if (ptr_to_percent[index_format] == sp_chars[index_sp_chars])
+			{/*hubo una coincidencia con un caracter especial*/
+
+				format_buffer = malloc(250);
+				if (format_buffer == NULL)
 				{
-					if (val_chars[index_val] != 0)
-						return (NULL);
-					buffer_format[index_buffer++] = '0';
-					break;
-				}	buffer_format[index_val] = '1';
-				break;
+					free(buffer);
+					exit(98);
+				}
+				format_buffer[0] = '\0';
+
+				fbc = get_format(ptr_to_percent, format_buffer, index_format);
+				if (fbc == NULL)
+				{
+					free(format_buffer);
+					return (0);
+				}
+				if (sp_chars[index_sp_chars] == '%')
+				{
+					_strncat(buffer, "%", 1024);
+					return (index_format);
+				}
+
+				append_arg(buffer, format_buffer, sp_chars[index_sp_chars], param_list);
+				return (index_format);
 			}
-		}
-		if (index_val > 3)
-		{
-			if (ptr_to_percent[index] == '.')
-			{
-				if (has_point)
-					return (NULL);
-				buffer_format[index_buffer++] = '.';
-				id_sec = 1;
-				has_point = 1;
-			}
-			else if ('0' < ptr_to_percent[index] && ptr_to_percent[index] <= '9')
-			{	id_sec = 1;
-				buffer_format[index_buffer++] = ptr_to_percent[index];
-			}	else
-				return (NULL);
 		}
 	}
-	buffer_format[index_buffer] = '\0';
-	return (buffer_format);
+	/*no se encontro caracter especial*/
+	return (0);
 }
