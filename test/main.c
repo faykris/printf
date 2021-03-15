@@ -9,7 +9,7 @@ int main(void)
 {
     /* s c d i u o xX p r */
     /*char txt[] = "hola\n";*/
-    char whatTest[] = "d";
+    char whatTest[] = "b";
     int i = 0;
 
    while (whatTest[i])

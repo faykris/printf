@@ -31,8 +31,8 @@ void test_string(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a= _printf("hola \0 oo%    \n");
-    b= printf("hola \0 oo%    \n");
+    a= _printf("hola oo%    \n");
+    b= printf("hola oo%    \n");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);

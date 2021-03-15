@@ -10,10 +10,10 @@
  */
 char *copy_binary(char *sbuffer, char *format, va_list param_list)
 {
-	int number = (int) va_arg(param_list, unsigned int);
+	unsigned int number = va_arg(param_list, unsigned int);
 
 	format[0] = '\0';
-	dec_converter(number, sbuffer, 2);
+	dec_converter_uns(number, sbuffer, 2);
 
 	return (sbuffer);
 }

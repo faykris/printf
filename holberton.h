@@ -43,6 +43,8 @@ char *copy_custom_string(char *sbuffer, char *format, va_list param_list);
 
 void int_to_str(char *sbuffer, int number);
 
+void dec_converter_uns(unsigned int dec, char *str_converted, int base);
+
 /**
  * struct cp_func - structure holds data type and pointer.
  * @esp: especial character (s, f, i, d, ...).
