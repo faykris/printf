@@ -3,18 +3,18 @@
 /**
  * _printf - format and print data
  *
- * @format1: arguments data to be printed
+ * @format: arguments data to be printed
  *
  * Return: number of bytes printed.
  */
-int _printf(const char *format1, ...)
+int _printf(const char *format, ...)
 {
-	char *format = (char *) format1;
+	char *format1 = (char *) format;
 	char *buffer = NULL, *format_pos;
 	va_list param_list;
 	int index_format, ret_steps;
 
-	if (format == NULL)
+	if (format1 == NULL)
 		return (-1);
 
 	buffer = malloc(1024);
@@ -22,13 +22,13 @@ int _printf(const char *format1, ...)
 		return (-1);
 
 	buffer[0] = '\0';
-	va_start(param_list, format1);
+	va_start(param_list, format);
 
 	for (index_format = 0; format[index_format]; index_format++)
 	{
-		format_pos = format + index_format;
+		format_pos = format1 + index_format;
 		if (*format_pos == '%' && *(format_pos + 1) == '%')
-			_strncat(buffer, format + (++index_format), 1);
+			_strncat(buffer, format1 + (++index_format), 1);
 		else if (*format_pos != '%')
 			_strncat(buffer, format_pos, 1);
 		else
