@@ -14,14 +14,12 @@
 
 **Table of Contents**
 
-[TOCM]
-
 [TOC]
 
 ## How It Works?
 In this function we define a first parameter where we have the data to print and it will be verified if it has any identifier operator, the other parameters will correspond to the identifier operators found in the first.
 Now, we will show the different use cases of this function: 
-### Only a text Without variables
+### Print a text Without variables
 ```C
 #include "holberton.h"
 
@@ -33,9 +31,11 @@ int main()
 }
 ```
 ```
-Example1: Printing a simple text with
+Example0: Printing a simple text with
 
 ```
+Only we needs to put a string value into double quotes without special characters as '%' because it used for identify other type formats
+
 ### Print some concatenated strings
 ```C
 #include "holberton.h"
@@ -51,6 +51,7 @@ int main()
 Example1: Printing a simple text with another text
 
 ```
+In this case, we uses a % with the 's' into the first parameter for indicate where it puts the data of the second parameter that corresponding a string value
 ### Only a text with variables
 ```C
 #include "holberton.h"
@@ -68,7 +69,7 @@ int main()
 Example2: Printing a simple text with another text and other
 
 ```
-### print a integer number
+### Print a integer number
 ```C
 #include "holberton.h"
 
@@ -85,4 +86,38 @@ int main()
 Printing a integer 6 as 6
 
 ```
-##How My Code Works?
+We uses another identify format for the integer numbers that is %d, the output shows that integer stored in the variable num1 replacing the identify format.
+### Print a 1 decimal float number 
+```C
+int main()
+{
+	float num2 = 6.5; 
+
+	_printf("Example4: Printing a float 6.5 as %.1f\n", num2);
+
+	return (0);
+}
+```
+```
+Example4: Printing a float 6.5 as 6.5
+
+```
+For the float value, we uses a point character followed by 1, this number indicates to print only one decimal value and followed by f, the float value is in the second parameter variable.
+
+## How My Code Works?
+Everything we need for the _printf function to execute correctly, we will show below:
+
+### Header file
+We define a header file names "holberton.h" where puts the prototypes functions, include standard libraries to use and a struct that contains the different format types used in _printf function.
+
+#### Standard libraries
+For some proccess is neccessary use the standard libraries for example we use the write fuction across the `<unistd.h>` library.
+
+#### Functions prototypes
+Small functions are necessary for realize some operations with the characters found in the process and are defined with their respective name, data type of parameters.
+
+#### cp_func struct
+Contain a char parameter followed a function parameter who permits select the corresponding identify operators at the pointer position.
+
+#### .c Source codes
+Contains the logic to use in each step the _printf process, using the different functions.
