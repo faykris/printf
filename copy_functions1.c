@@ -15,6 +15,7 @@ char *copy_string(char *sbuffer, char *format, va_list param_list)
 
 	_strncat(sbuffer, va_arg(param_list, char *), 1024);
 
+	format[0] = '\0';
 	/* aply format */
 
 	return (sbuffer);
@@ -34,7 +35,7 @@ char *copy_char(char *sbuffer, char *format, va_list param_list)
 {
 	char s = va_arg(param_list, char *);
 		_strncat(sbuffer, &s, 1);
-
+	format[0] = '\0';
 	/* aply format */
 
 	return (sbuffer);
@@ -55,7 +56,7 @@ char *copy_int(char *sbuffer, char *format, va_list param_list)
 
 	if (number < 0)
 		sbuffer[0] = '-';
-
+	format[0] = '\0';
 	dec_converter(number, sbuffer, 10);
 
 	return (sbuffer);

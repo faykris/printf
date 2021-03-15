@@ -10,8 +10,9 @@
  */
 char *copy_binary(char *sbuffer, char *format, va_list param_list)
 {
-	int numberb = (int) va_arg(param_list, unsigned int);
+	int number = (int) va_arg(param_list, unsigned int);
 
+	format[0] = '\0';
 	dec_converter(number, sbuffer, 2);
 
 	return (sbuffer);
@@ -27,7 +28,9 @@ char *copy_binary(char *sbuffer, char *format, va_list param_list)
  */
 char *copy_float(char *sbuffer, char *format, va_list param_list)
 {
-
+	format[0] = '\0';
+	sbuffer[0] = va_arg(param_list, int);
+	return (sbuffer);
 }
 
 /**
@@ -46,6 +49,7 @@ char *copy_custom_string(char *sbuffer, char *format, va_list param_list)
 	char tmpChar;
 	char str_hex[20] = {0};	/* aply format next */
 
+	format[0] = '\0';
 	for (i_tmpBuf = 0; tmpBuf[i_tmpBuf]; i_tmpBuf++)
 	{
 		tmpChar = tmpBuf[i_tmpBuf];
