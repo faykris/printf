@@ -1,12 +1,13 @@
 #include "holberton.h"
 
 /**
- * steps -
+ * steps - check for valid format in the string
  *
- * @ptr_to_percent:
- * @param_list:
+ * @ptr_to_percent:pointer to % simbol in format string
+ * @param_list: list of parameters entering variadic.
+ * @buffer: pointer to response string
  *
- * Return: number of format caracters.
+ * Return: number of processed format characters
  */
 int steps(char *ptr_to_percent, va_list param_list, char *buffer)
 {
@@ -26,16 +27,16 @@ int steps(char *ptr_to_percent, va_list param_list, char *buffer)
 				format_buffer = malloc(250);
 				if (format_buffer == NULL)
 				{
-					free (buffer);
-					exit (98);
+					free(buffer);
+					exit(98);
 				}
-				format_buffer[0]='\0';
+				format_buffer[0] = '\0';
 
 				fbc = clean_format(ptr_to_percent, format_buffer, index_format);
 
 				if (fbc == NULL)
 				{
-					free (format_buffer);
+					free(format_buffer);
 					return (0);
 				}
 				string_copy(buffer, format_buffer, sp_chars[index_sp_chars], param_list);
@@ -52,27 +53,36 @@ int steps(char *ptr_to_percent, va_list param_list, char *buffer)
 
 
 
-
-void string_copy(char *buffer, char *format_buffer, char specifier, va_list param_list)
+/**
+ * string_copy - appends the text processed by the copy_functions
+ *
+ * @buffer: pointer to response string
+ * @format: format of the string.
+ * @sp_char: character as specifier of format
+ * @param_list: list of parameters entering variadic.
+ *
+ * Return: nothing
+ */
+void string_copy(char *buffer, char *format, char sp_char, va_list param_list)
 {
-	char *(*ptr_func)(char *sbuffer, char *format_buffer, va_list param_list);
+	char *(*ptr_func)(char *sbuffer, char *format, va_list param_list);
 	char *sbuffer;
 
-	ptr_func = select_func(specifier);
+	ptr_func = select_func(sp_char);
 
 	sbuffer = malloc(1024);
 	if (sbuffer == NULL)
 	{
-		free (buffer);
-		free (format_buffer);
-		exit (98);
+		free(buffer);
+		free(format);
+		exit(98);
 	}
-	sbuffer[0]='\0';
+	sbuffer[0] = '\0';
 
-	ptr_func(sbuffer, format_buffer, param_list);
+	ptr_func(sbuffer, format, param_list);
 
 	_strncat(buffer, sbuffer, 1024);
 
-	free (sbuffer);
-	free (format_buffer);
+	free(sbuffer);
+	free(format);
 }

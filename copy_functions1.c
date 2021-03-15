@@ -1,12 +1,14 @@
 #include "holberton.h"
 
 /**
- * copy_string -
+ * copy_string - process the s format identifier
+ * and copy it in secondary buffer
  *
- * @ptr_to_percent: pointer to string.
+ * @sbuffer: buffer to be filled with arg
+ * @format: format to be aplied in buffer before return it.
  * @param_list: list of arguments
  *
- * Return: pointer to secondary buffer
+ * Return: pointer to secondary buffer.
  */
 char *copy_string(char *sbuffer, char *format, va_list param_list)
 {
@@ -18,6 +20,16 @@ char *copy_string(char *sbuffer, char *format, va_list param_list)
 	return (sbuffer);
 }
 
+/**
+ * copy_char - process the c format identifier
+ * and copy it in secondary buffer
+ *
+ * @sbuffer: buffer to be filled with arg
+ * @format: format to be aplied in buffer before return it.
+ * @param_list: list of arguments
+ *
+ * Return: pointer to secondary buffer.
+ */
 char *copy_char(char *sbuffer, char *format, va_list param_list)
 {
 	char s = va_arg(param_list, char *);
@@ -39,7 +51,7 @@ char *copy_char(char *sbuffer, char *format, va_list param_list)
  */
 char *copy_int(char *sbuffer, char *format, va_list param_list)
 {
-	int number= va_arg(param_list, int);
+	int number = va_arg(param_list, int);
 
 	if (number < 0)
 		sbuffer[0] = '-';
