@@ -1,3 +1,69 @@
+# README.md
+
+![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
+
+![](https://img.shields.io/github/contributors/faykris/printf) ![](https://img.shields.io/github/last-commit/faykris/printf) ![](https://img.shields.io/github/commit-activity/m/faykris/printf)
+
+### Description
+- Function that prints argument(s) according to format
+
+### Features
+- Created in language C and only can be used in it;
+- Some format controls are used;
+- Based in the version written by David MacKenzie
+
+**Table of Contents**
+
+[TOC]
+
+## How It Works?
+In this function we define a first parameter where we have the data to print and it will be verified if it has any identifier operator, the other parameters will correspond to the identifier operators found in the first.
+### _printf fuunction:
+```C
+int _printf(const char *format, ...);
+```
+This is the main function which contains all the execution processes connected to the secondary functions, it return a integer value corresponding a total string lenght and use a variadic constant char pointer.
+
+Now, we will show the different use cases of this function: 
+### Print a text Without variables
+```C
+#include "holberton.h"
+
+int main()
+{
+	_printf("Example0: Printing a simple text\n");
+
+	return (0);
+}
+```
+```
+Example0: Printing a simple text with
+
+```
+Only we needs to put a string value into double quotes without special characters as '%' because it used for identify other type formats
+
+### Print some concatenated strings
+```C
+#include "holberton.h"
+
+int main()
+{
+	_printf("Example1: Printing a simple text %s", "with another text\n");
+
+	return (0);
+}
+```
+```
+Example1: Printing a simple text with another text
+
+```
+In this case, we uses a % with the 's' into the first parameter for indicate where it puts the data of the second parameter that corresponding a string value with format pointer.
+### Only a text with variables
+```C
+#include "holberton.h"
+
+int main()
+{
 	char txt1[] = "with another text", txt2[] = "and other\n";
 
 	_printf("Example2: Printing a simple text %s %s", txt1, txt2);
@@ -73,7 +139,7 @@ int main()
 }
 ```
 ```
-Example6: The binary value of 68 is 1000100
+Example6: The binary value of 68 is 1000100Example6: The binary value of 68 is 1000100
 
 ```
 This identy format doesn't have the original function, converts a unsigned integer value to a binary and print it replacing the %b characters.
