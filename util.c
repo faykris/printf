@@ -181,7 +181,7 @@ void rev_string(char *s)
 		index++;
 		len -= 2;
 	}
-
+}
 
 /**
  * int_to_str - changes to string a number.
