@@ -23,10 +23,7 @@ void dec_converter_uns(unsigned int dec, char *str_converted, int base)
 
 	while (cociente)
 	{
-		if (cociente < 0)
-			str_converted[index++] = letters[-(cociente % base)];
-		else
-			str_converted[index++] = letters[cociente % base];
+		str_converted[index++] = letters[cociente % base];
 		cociente /= base;
 	}
 	if (inNegative)

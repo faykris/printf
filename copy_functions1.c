@@ -12,8 +12,12 @@
  */
 char *copy_string(char *sbuffer, char *format, va_list param_list)
 {
+	char *argument = va_arg(param_list, char *);
 
-	_strncat(sbuffer, va_arg(param_list, char *), 1024);
+	if (argument == NULL)
+		_strncat(sbuffer, "(null)", 1024);
+	else
+	_strncat(sbuffer, argument, 1024);
 
 	format[0] = '\0';
 	/* aply format */
