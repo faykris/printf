@@ -141,6 +141,7 @@ void test_octal()
 	_printf("Unsigned octal:[%o]\n", ui);
     printf("Unsigned octal:[%o]\n", ui);
 }
+
 void test_hex()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;

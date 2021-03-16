@@ -20,7 +20,7 @@ int main(void)
     /* s c d i u o xX p r */
     /*char txt[] = "hola\n";*/
 
-    char whatTest[] = "u";
+    char whatTest[] = "o";
     int i = 0;
     int len;
     int len2;
@@ -46,6 +46,9 @@ int main(void)
                 break;
 	case 'u':
 		test_ui();
+		break;
+	case 'o':
+		test_octal();
 		break;
         }
         i++;

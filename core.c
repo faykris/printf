@@ -107,7 +107,8 @@ char *(*select_func(char specifier))(char *, char *, va_list)
 		{'b', process_binary},
 		{'S', process_custom_string},
 		{'f', process_float},
-		{'u', process_uns_int}
+		{'u', process_uns_int},
+		{'o', process_octal}
 	};
 
 	int index = 0;
