@@ -15,7 +15,7 @@ int find_format(char *ptr_to_percent, va_list param_list, char *buffer);
 /* core.c*/
 void append_arg(char *, char *, char, va_list);
 
-char *get_format(char *ptr_to_percent, char *format, int index_spc,int *);
+char *get_format(char *ptr_to_percent, char *format, int index_spc, int *);
 
 char *(*select_func(char specifier))(char *, char *, va_list);
 
