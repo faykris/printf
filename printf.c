@@ -61,7 +61,7 @@ int _printf(const char *format, ...)
  */
 int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 {
-	char *format_buffer, *fbc, sp_chars[] = "%scdiSb";
+	char *format_buffer, *fbc, sp_chars[] = "%scdiSbu";
 	int index_format, index_sp_chars, indexFallo[1];
 
 	*indexFallo = 0;
