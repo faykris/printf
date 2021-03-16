@@ -19,7 +19,7 @@ int _strlen(char *string)
 }
 
 /**
- * _strncat - concatenates two strings.
+ * _strncat - concatenates two strings and reallocates if needed.
  *
  * @dest: string to be modified.
  * @src: string to be copied to the end of dest.
