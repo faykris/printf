@@ -12,16 +12,16 @@
  */
 char *process_string(char *sbuffer, char *format, va_list param_list)
 {
+
 	char *argument = va_arg(param_list, char *);
 
 	if (argument == NULL)
-		_strncat(sbuffer, "(null)", 1024);
+		_strncat(sbuffer, "(null)", 10240);
 	else
-	_strncat(sbuffer, argument, 1024);
+	_strncat(sbuffer, argument, 10024);
 
 	format[0] = '\0';
 	/* aply format */
-
 	return (sbuffer);
 }
 

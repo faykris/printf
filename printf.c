@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	if (format1 == NULL)
 		return (-1);
-	buffer = malloc(sizeof(char) * 1024);
+	buffer = malloc(sizeof(char) * 5000);
 	if (!buffer)
 		return (-1);
 	buffer[0] = '\0';
@@ -74,7 +74,7 @@ int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 			if (ptr_2_p[index_format] == sp_chars[index_sp_chars] ||
 				!ptr_2_p[index_format])
 			{/*hubo una coincidencia con un caracter especial*/
-				format_buffer = malloc(250);
+				format_buffer = malloc(1024);
 				if (format_buffer == NULL)
 				{	free(buffer);
 					exit(98);
@@ -84,19 +84,12 @@ int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 					index_format, indexFallo);
 				if (fbc == NULL)
 				{
-					if (ptr_2_p[index_format] == sp_chars[index_sp_chars])
-					{	free(format_buffer);
-						return (0);
-					}	translate_format(buffer, format_buffer);
 					free(format_buffer);
-					return (*indexFallo - 1);
+						return (0);
 				}
-				if (!ptr_2_p[index_format])
-				{	free(format_buffer);
-					return (-1);
-				}
+
 				if (sp_chars[index_sp_chars] == '%')
-				{
+				{	free(format_buffer);
 					return (0);
 				}
 				append_arg(buffer, format_buffer,
