@@ -65,7 +65,7 @@ int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 	int index_format, index_sp_chars, indexFallo[1];
 
 	*indexFallo = 0;
-	for (index_format = 1; 1 ; index_format++)
+	for (index_format = 1; ptr_2_p[index_format] ; index_format++)
 	{/*itera hasta encontrar un caracter especial o un caeacter nulo*/
 		for (index_sp_chars = 0; sp_chars[index_sp_chars]; index_sp_chars++)
 		{/*itera para cada caracter especial */
