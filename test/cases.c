@@ -2,7 +2,7 @@
 
 void test_string(void)
 {
-    int a=0, b=0;
+    int a=0, b=0;/*
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
 	a = _printf("a=%sh\n","Hola Mundo");
     b = printf("b=%sh\n","Hola Mundo");
@@ -77,14 +77,14 @@ void test_string(void)
     _printf("String:[%     %]\n");
     printf("String:[%      %]\n");
      _printf("Percent:[% 0--+-++-+10.1%]\n");
-    printf("Percent:[% 0--+-++-+10.1%]\n");
+     printf("Percent:[% 0--+-++-+10.1%]\n");*/
 }
 
 void test_char(void)
 {
     int a=0, b=0;
 
-    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+/*    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
 	a = _printf("Character:[%c]\n", 'H');
     b = printf("Character:[%c]\n", 'H');
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
@@ -102,7 +102,7 @@ void test_char(void)
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
 	a = _printf("%c\n", "");
     b = printf("%c\n", "");
-    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;*/
 }
 void test_int(void)
 {
@@ -142,16 +142,24 @@ void test_ui(){
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
 	_printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
+
+    ui = UINT_MAX;
+	_printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+
 }
+
 void test_octal()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
 	_printf("Unsigned octal:[%o]\n", ui);
     printf("Unsigned octal:[%o]\n", ui);
 }
+
 void test_hex()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
+
 int a, b;
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
     a =_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
@@ -161,6 +169,10 @@ int a, b;
 	 a =_printf("Unsigned hexadecimal:[%x, %X]\n", 0, 0);
      b = printf("unsigned hexadecimal:[%x, %X]\n",UINT_MAX, 1000);
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+
 }
 
 void test_custom_string()

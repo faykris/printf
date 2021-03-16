@@ -106,7 +106,15 @@ char *(*select_func(char specifier))(char *, char *, va_list)
 		{'i', process_int},
 		{'b', process_binary},
 		{'S', process_custom_string},
-		{'f', process_float}
+		{'f', process_float},
+		{'p', process_pointer},
+		{'x', process_hex},
+		{'X', process_hex},
+		{'r', process_reverse},
+		{'R', process_root13},
+		{'u', process_uns_int},
+		{'o', process_octal}
+
 	};
 
 	int index = 0;

@@ -32,7 +32,7 @@ char *_strncat(char *, char *, int n);
 void rev_string(char *s);
 
 /* util2.c */
-void dec_converter(int dec, char *str_converted, int base);
+void dec_converter(long dec, char *str_converted, int base);
 
 void dec_converter_uns(unsigned int dec, char *str_converted, int base);
 

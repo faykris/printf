@@ -8,10 +8,10 @@
  *
  * Return: None.
  */
-void dec_converter(int dec, char *str_converted, int base)
+void dec_converter(long dec, char *str_converted, int base)
 {
 	int index = 0;
-	int cociente = dec;
+	long cociente = dec;
 	char letters[] = {"0123456789abcdef"};
 	int inNegative = 0;
 
