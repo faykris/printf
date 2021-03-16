@@ -19,8 +19,8 @@ void test_string(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a= _printf("a=%sh%s\n","Hola Mundo"," 100");
-    b= printf("b=%sh%s\n","Hola Mundo"," 100");
+    a= _printf("a=%s\t\a%s\n","Hola Mundo"," 100");
+    b= printf("b=%s\t\a%s\n","Hola Mundo"," 100");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
@@ -54,9 +54,28 @@ void test_string(void)
     b = printf("\\b=\t%s%%h%s\n","Hola", " Mundo");
      (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("%s\n", NULL);
+    b = printf("%s\n", NULL);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("%s\n", "");
+    b = printf("%s\n", "");
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("", "");
+    b = printf("", "");
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf(NULL, "");
+    b = printf(NULL, "");
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    _printf("String:[%     %]\n");
+    printf("String:[%      %]\n");
      _printf("Percent:[% 0--+-++-+10.1%]\n");
     printf("Percent:[% 0--+-++-+10.1%]\n");
 }
@@ -71,8 +90,18 @@ void test_char(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-	a = _printf("Character:[%c]\n", "H");
-    b = printf("Character:[%c]\n", "H");
+	a = _printf("Character:[%c %c %s]\n", 46, 150, "h");
+    b = printf("Character:[%c %c %s]\n", 46,150, "h");
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("%c\n", NULL);
+    b = printf("%c\n", NULL);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("%c\n", "");
+    b = printf("%c\n", "");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 }
 void test_int(void)

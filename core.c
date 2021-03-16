@@ -128,7 +128,15 @@ char *(*select_func(char specifier))(char *, char *, va_list)
  */
 int _write(char *buffer)
 {
-	int bytes_printed = write(1, buffer, _strlen(buffer));
+	int len = 0, bytes_printed;
+
+	while (buffer[len])
+	{
+		if (buffer[len] == 1)
+			buffer[len] = 0;
+		len++;
+	}
+	bytes_printed = write(1, buffer, len);
 
 	free(buffer);
 	buffer = "";

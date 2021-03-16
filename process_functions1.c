@@ -38,7 +38,10 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
 char *process_char(char *sbuffer, char *format, va_list param_list)
 {
 	char s = va_arg(param_list, char *);
-		_strncat(sbuffer, &s, 1);
+
+	if (!s)
+		s = 1;
+	_strncat(sbuffer, &s, 1);
 	format[0] = '\0';
 	/* aply format */
 
