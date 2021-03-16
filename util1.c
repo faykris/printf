@@ -30,8 +30,17 @@ int _strlen(char *string)
 char *_strncat(char *dest, char *src, int n)
 {
 	int dest_index = 0;
-	int src_index = 0;
+	int src_index = 0, difference = 0;
 
+	if ((_strlen(dest) + _strlen(src)) > 1023)
+	{
+		difference = 1023 - (_strlen(dest) + _strlen(src));
+		dest = realloc(dest, 1024 + difference);
+		if (dest == NULL)
+		{
+			exit(98);
+		}
+	}
 	while (*(dest + dest_index) != '\0')
 		dest_index++;
 
