@@ -121,8 +121,22 @@ void test_int(void)
 void test_address(void)
 {
 	void * addr = (void *)0x7ffe637541f0;
-	_printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
+int a, b;
+        printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("Address:[%p]\n", addr);
+    b = printf("Address:[%p]\n", addr);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("Address:[%p]\n", NULL);
+    b = printf("Address:[%p]\n", NULL);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	a = _printf("Address:[%p]\n", "");
+    b = printf("Address:[%p]\n", "");
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+
 }
 void test_ui(){
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
@@ -138,8 +152,15 @@ void test_octal()
 void test_hex()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
-	 _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+int a, b;
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+    a =_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    b = printf("unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
+    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
+	 a =_printf("Unsigned hexadecimal:[%x, %X]\n", 0, 0);
+     b = printf("unsigned hexadecimal:[%x, %X]\n",UINT_MAX, 1000);
+    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 }
 
 void test_custom_string()

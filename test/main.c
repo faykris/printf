@@ -20,7 +20,7 @@ int main(void)
     /* s c d i u o xX p r */
     /*char txt[] = "hola\n";*/
 
-    char whatTest[] = "s";
+    char whatTest[] = "pxX";
     int i = 0;
     int len;
     int len2;
@@ -36,13 +36,18 @@ int main(void)
                 test_char();
                 break;
             case 'd':
-                test_int();
-                break;
-	case 'i':
-		test_int();
-		break;
+	        case 'i':
+		        test_int();
+		        break;
             case 'p':
+                test_address();
+                break;
+            case 'x':
+            case 'X':
                 test_hex();
+                break;
+            case 'S':
+                test_custom_string();
                 break;
         }
         i++;
@@ -50,6 +55,15 @@ int main(void)
 
     /*   other test*/
 
+
+    len = _printf("%r", "hola mundo en reversa\n");
+    len2 = printf("%s", "hola mundo en reversa\n");
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    len = _printf("%R", "Why did the chicken cross the road?\n");
+    len2 = printf("%s", "Why did the chicken cross the road?\n");
+        _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
 
 
 /*
