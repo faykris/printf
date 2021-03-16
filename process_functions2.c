@@ -17,7 +17,7 @@ char *process_float(char *sbuffer, char *format, va_list param_list)
 }
 
 /**
- * process_unsigned - copies unsigned integer into the secondary buffer.
+ * process_uns_int - copies unsigned integer into the secondary buffer.
  * @sbuffer: empty secondary buffer to copy data.
  * @format: pointer with the format that the data needs.
  * @param_list: parameters not declared in variadic function.
