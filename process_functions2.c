@@ -60,8 +60,10 @@ char *process_pointer(char *sbuffer, char *format, va_list param_list)
 	}
 	format[0] = '\0';
 
-  
- /**
+	return (sbuffer);
+}
+
+/**
  * process_uns_int - copies unsigned integer into the secondary buffer.
  * @sbuffer: empty secondary buffer to copy data.
  * @format: pointer with the format that the data needs.
