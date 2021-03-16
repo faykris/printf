@@ -45,10 +45,10 @@ void dec_converter(long dec, char *str_converted, int base)
  *
  * Return: None.
  */
-void dec_converter_uns(unsigned int dec, char *str_converted, int base)
+void dec_converter_uns(unsigned long dec, char *str_converted, int base)
 {
 	int index = 0;
-	unsigned int cociente = dec;
+	unsigned long cociente = dec;
 	char letters[] = {"0123456789abcdef"};
 	int inNegative = 0;
 

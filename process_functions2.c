@@ -47,13 +47,13 @@ char *process_float(char *sbuffer, char *format, va_list param_list)
  */
 char *process_pointer(char *sbuffer, char *format, va_list param_list)
 {
-	long argument = va_arg(param_list, long *);
+	unsigned long argument = va_arg(param_list, unsigned long);
 
 	if (argument == 0)
 		_strncat(sbuffer, "(nil)", 1024);
 	else
 	{
-		dec_converter(argument, sbuffer, 16);
+		dec_converter_uns(argument, sbuffer, 16);
 		rev_string(sbuffer);
 		_strncat(sbuffer, "x0", 1024);
 		rev_string(sbuffer);
