@@ -16,12 +16,10 @@ int _printf(const char *format, ...)
 
 	if (format1 == NULL)
 		return (-1);
-
 	buffer = malloc(sizeof(char) * 1024);
 	if (!buffer)
 		return (-1);
 	buffer[0] = '\0';
-
 	va_start(param_list, format);
 	for (index_format = 0; format[index_format]; index_format++)
 	{
@@ -32,18 +30,21 @@ int _printf(const char *format, ...)
 		{
 			if (*(format_pos + 1) == '%')
 				_strncat(buffer, format1 + (++index_format), 1);
-			else if (*(format_pos + 1) == '\0')
-				return (-1);
-			ret_steps = find_format(format_pos, param_list, buffer);
-			if (ret_steps == 0)
-				_strncat(buffer, format_pos, 1);
-			else if (ret_steps == -1)
-			{
-				_write(buffer);
-				return (-1);
-			}
 			else
-				index_format += (ret_steps);
+			{
+				if (*(format_pos + 1) == '\0')
+					return (-1);
+				ret_steps = find_format(format_pos, param_list, buffer);
+				if (ret_steps == 0)
+					_strncat(buffer, format_pos, 1);
+				else if (ret_steps == -1)
+				{
+					_write(buffer);
+					return (-1);
+				}
+				else
+					index_format += (ret_steps);
+			}
 		}
 	}
 	va_end(param_list);
