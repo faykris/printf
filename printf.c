@@ -33,13 +33,13 @@ int _printf(const char *format, ...)
 			else
 			{
 				if (*(format_pos + 1) == '\0')
+				{	_write(buffer);
 					return (-1);
-				ret_steps = find_format(format_pos, param_list, buffer);
+				}	ret_steps = find_format(format_pos, param_list, buffer);
 				if (ret_steps == 0)
 					_strncat(buffer, format_pos, 1);
 				else if (ret_steps == -1)
-				{
-					_write(buffer);
+				{	_write(buffer);
 					return (-1);
 				}
 				else
@@ -96,8 +96,8 @@ int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 					return (-1);
 				}
 				if (sp_chars[index_sp_chars] == '%')
-				{	_strncat(buffer, "%", 1024);
-					return (index_format);
+				{
+					return (0);
 				}
 				append_arg(buffer, format_buffer,
 					sp_chars[index_sp_chars], param_list);
