@@ -37,7 +37,7 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
  */
 char *process_char(char *sbuffer, char *format, va_list param_list)
 {
-	char s = va_arg(param_list, char *);
+	char s = va_arg(param_list, int);
 
 	if (!s)
 		s = 1;
