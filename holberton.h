@@ -15,7 +15,7 @@ int find_format(char *ptr_to_percent, va_list param_list, char *buffer);
 /* core.c*/
 void append_arg(char *, char *, char, va_list);
 
-char *get_format(char *ptr_to_percent, char *buffer_format, int index_spc);
+char *get_format(char *ptr_to_percent, char *format, int index_spc,int *);
 
 char *(*select_func(char specifier))(char *, char *, va_list);
 
@@ -35,6 +35,8 @@ void rev_string(char *s);
 void dec_converter(int dec, char *str_converted, int base);
 
 void dec_converter_uns(unsigned int dec, char *str_converted, int base);
+
+void translate_format(char *buffer, char *format_buffer);
 
 /* process_functions1.c*/
 char *process_string(char *sbuffer, char *format, va_list param_list);

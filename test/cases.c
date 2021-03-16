@@ -1,7 +1,5 @@
 #include "../holberton.h"
 
-void print_all(const char * const format, ...);
-
 void test_string(void)
 {
     int a=0, b=0;
@@ -16,8 +14,8 @@ void test_string(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a = _printf("a=%s\%s\n","Hola", " M");
-    b = printf("b=%s\%s\n","Hola", " M");
+    a = _printf("a=%ss\n","Hola", " M");
+    b = printf("b=%ss\n","Hola", " M");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
@@ -31,8 +29,9 @@ void test_string(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a= _printf("hola oo%    \n");
-    b= printf("hola oo%    \n");
+    a= _printf("Hola oo%   -9 + -\n");
+    b= printf("hola oo%  -9 + -\n");
+    printf("-----\n");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
@@ -46,20 +45,20 @@ void test_string(void)
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a= _printf("hola %    \n");
-    b= printf("hola %    \n");
-    (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
-
-    printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
     a= _printf("%sdd\n","Hola Mundo");
     b= printf("%sdd\n","Hola Mundo");
     (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
     printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);
-    a = _printf("\\a=\t%s%%h\%s\n","Hola", " Mundo");
-    b = printf("\\b=\t%s%%h\%s\n","Hola", " Mundo");
+    a = _printf("\\a=\t%s%%h%s\n","Hola", " Mundo");
+    b = printf("\\b=\t%s%%h%s\n","Hola", " Mundo");
      (a != b)?printf("\a^^***** a != b ***** a=%d\tb=%d *****^^\n", a, b):a++;
 
+
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+     _printf("Percent:[% 0--+-++-+10.1%]\n");
+    printf("Percent:[% 0--+-++-+10.1%]\n");
 }
 
 void test_char(void)
@@ -101,21 +100,20 @@ void test_ui(){
 	_printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
 }
-test_octal()
+void test_octal()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
 	_printf("Unsigned octal:[%o]\n", ui);
     printf("Unsigned octal:[%o]\n", ui);
 }
-test_hex()
+void test_hex()
 {
 	unsigned int ui = (unsigned int)INT_MAX + 1024;
-     void *addr = (void *)0x7ffe637541f0;
 	 _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 }
 
-test_custom_string()
+void test_custom_string()
 {
     int a = 0, b = 0;
    /* printf("<<<<<     -------%d-------     >>>>>\n", __LINE__);

@@ -53,48 +53,51 @@ int _printf(const char *format, ...)
 /**
  * find_format - check for valid format in the string
  *
- * @ptr_to_percent:pointer to % simbol in format string
+ * @ptr_2_p:pointer to % simbol in format string
  * @param_list: list of parameters entering variadic.
  * @buffer: pointer to response string
  *
  * Return: number of processed format characters
  */
-int find_format(char *ptr_to_percent, va_list param_list, char *buffer)
+int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 {
 	char *format_buffer, *fbc, sp_chars[] = "%scdiSb";
-	int index_format, index_sp_chars;
+	int index_format, index_sp_chars, indexFallo[1];
 
+	*indexFallo = 0;
 	for (index_format = 1; 1 ; index_format++)
 	{/*itera hasta encontrar un caracter especial o un caeacter nulo*/
 		for (index_sp_chars = 0; sp_chars[index_sp_chars]; index_sp_chars++)
 		{/*itera para cada caracter especial */
-			if (ptr_to_percent[index_format] == sp_chars[index_sp_chars] ||
-				!ptr_to_percent[index_format])
+			if (ptr_2_p[index_format] == sp_chars[index_sp_chars] ||
+				!ptr_2_p[index_format])
 			{/*hubo una coincidencia con un caracter especial*/
 				format_buffer = malloc(250);
 				if (format_buffer == NULL)
-				{
-					free(buffer);
+				{	free(buffer);
 					exit(98);
 				}
 				format_buffer[0] = '\0';
-				fbc = get_format(ptr_to_percent, format_buffer, index_format);
-				if (fbc == NULL || !ptr_to_percent[index_format])
+				fbc = get_format(ptr_2_p, format_buffer,
+					index_format, indexFallo);
+				if (fbc == NULL)
 				{
+					if (ptr_2_p[index_format] == sp_chars[index_sp_chars])
+					{	free(format_buffer);
+						return (0);
+					}	translate_format(buffer, format_buffer);
 					free(format_buffer);
-					if (!ptr_to_percent[index_format])
-						return (-1);
-					return (0);
+					return (*indexFallo - 1);
+				}
+				if (!ptr_2_p[index_format])
+				{	free(format_buffer);
+					return (-1);
 				}
 				if (sp_chars[index_sp_chars] == '%')
-				{
-					_strncat(buffer, "%", 1024);
+				{	_strncat(buffer, "%", 1024);
 					return (index_format);
 				}
-				append_arg(buffer, format_buffer, sp_chars[index_sp_chars], param_list);
+				append_arg(buffer, format_buffer,
+					sp_chars[index_sp_chars], param_list);
 				return (index_format);
-			}
-		}
-	} /*no se encontro caracter especial*/
-	return (0);
-}
+			}	}	} return (0); }

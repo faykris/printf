@@ -69,3 +69,26 @@ void dec_converter_uns(unsigned int dec, char *str_converted, int base)
 	str_converted[index] = '\0';
 	rev_string(str_converted);
 }
+
+
+/**
+ * translate_format - changes to string an unsigned number.
+ *
+ * @buffer: pointer to response string
+ * @format_buffer: pointer to format buffer
+ *
+ * Return: None.
+ */
+void translate_format(char *buffer, char *format_buffer)
+{
+	_strncat(buffer, "%", 1024);
+	if (format_buffer[1] == '1')
+		_strncat(buffer, "+", 1024);
+	else if (format_buffer[2] == '1')
+		_strncat(buffer, " ", 1024);
+	if (format_buffer[0] == '1')
+		_strncat(buffer, "-", 1024);
+	else if (format_buffer[3] == '1')
+		_strncat(buffer, "0", 1024);
+	_strncat(buffer, format_buffer + 4, 1024);
+}
