@@ -112,6 +112,9 @@ char *(*select_func(char specifier))(char *, char *, va_list)
 		{'X', process_hex},
 		{'r', process_reverse},
 		{'R', process_root13},
+		{'u', process_uns_int},
+		{'o', process_octal}
+
 	};
 
 	int index = 0;

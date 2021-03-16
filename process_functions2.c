@@ -59,5 +59,44 @@ char *process_pointer(char *sbuffer, char *format, va_list param_list)
 		rev_string(sbuffer);
 	}
 	format[0] = '\0';
+
+  
+ /**
+ * process_uns_int - copies unsigned integer into the secondary buffer.
+ * @sbuffer: empty secondary buffer to copy data.
+ * @format: pointer with the format that the data needs.
+ * @param_list: parameters not declared in variadic function.
+ *
+ * Return: secondary buffer changed.
+ */
+char *process_uns_int(char *sbuffer, char *format, va_list param_list)
+{
+	unsigned int number = va_arg(param_list, unsigned int);
+
+	format[0] = '\0';
+	/* apply format */
+
+	dec_converter_uns(number, sbuffer, 10);
+
+	return (sbuffer);
+}
+
+/**
+ * process_octal - copies octal of integer into the secondary buffer.
+ * @sbuffer: empty secondary buffer to copy data.
+ * @format: pointer with the format that the data needs.
+ * @param_list: parameters not declared in variadic function.
+ *
+ * Return: secondary buffer changed.
+ */
+char *process_octal(char *sbuffer, char *format, va_list param_list)
+{
+	unsigned int number = va_arg(param_list, unsigned int);
+
+	format[0] = '\0';
+	/* apply format */
+
+	dec_converter_uns(number, sbuffer, 8);
+
 	return (sbuffer);
 }

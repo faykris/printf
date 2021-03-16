@@ -20,7 +20,7 @@ int main(void)
     /* s c d i u o xX p r */
     /*char txt[] = "hola\n";*/
 
-    char whatTest[] = "s";
+    char whatTest[] = "o";
     int i = 0;
     int len;
     int len2;
@@ -44,6 +44,12 @@ int main(void)
             case 'p':
                 test_hex();
                 break;
+	case 'u':
+		test_ui();
+		break;
+	case 'o':
+		test_octal();
+		break;
         }
         i++;
     }
@@ -62,7 +68,7 @@ int main(void)
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");*/
+    printf("String:[%s]\n", "I am a string !");
     len = _printf("P1rcent:[% 0--+-++-+10.1%]\n");
     len2 = printf("p2rcent:[% 0--+-++-+10.1%]\n");
     len = _printf("P3rcent:[%   ");
@@ -72,7 +78,7 @@ int main(void)
     len = _printf("P5rcent:[%       0++-.9     ");
     len2 = printf("p6rcent:[%       0++-.9     ");
     _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
+    printf("Len:[%d]\n", len2);*/
 
     return (0);
 }
