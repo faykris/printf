@@ -17,7 +17,7 @@ void append_arg(char *buffer, char *format, char sp_char, va_list param_list)
 
 	ptr_func = select_func(sp_char);
 
-	sbuffer = malloc(5000);
+	sbuffer = malloc(1024);
 	if (sbuffer == NULL)
 	{
 		free(buffer);
@@ -27,7 +27,9 @@ void append_arg(char *buffer, char *format, char sp_char, va_list param_list)
 	sbuffer[0] = '\0';
 
 	ptr_func(sbuffer, format, param_list);
-	buffer = _strncat(buffer, sbuffer, 10024);
+
+	_strncat(buffer, sbuffer, 1024);
+
 	free(sbuffer);
 	free(format);
 }
@@ -44,11 +46,10 @@ void append_arg(char *buffer, char *format, char sp_char, va_list param_list)
  */
 char *get_format(char *ptr_2_p, char *format, int index_spc)
 {
-	int index, index_buffer = 5, id_sec = 0, has_point = 0, index_val;
-	char val_chars[] = "-+ 0#";
+	int index, index_buffer = 4, id_sec = 0, has_point = 0, index_val;
+	char val_chars[] = "-+ 0";
 
-	for (index_val = 0; val_chars[index_val]; index_val++)
-		format[index_val] = 0;
+	format[0] = format[1] = format[2] = format[3] = '0';
 	for (index = 1; index < index_spc; index++)
 	{
 		for (index_val = 0; val_chars[index_val]; index_val++)
@@ -61,7 +62,7 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 				}
 			}
 		}
-		if (index_val > 4)
+		if (index_val > 3)
 		{
 			if (ptr_2_p[index] == '.')
 			{
