@@ -12,16 +12,37 @@
  */
 char *process_string(char *sbuffer, char *format, va_list param_list)
 {
-
+	int index = 5, num = 0, diferencia = 0;
+	int p = 0;
 	char *argument = va_arg(param_list, char *);
 
 	if (argument == NULL)
 		_strncat(sbuffer, "(null)", 10240);
 	else
-	_strncat(sbuffer, argument, 10024);
-
-	format[0] = '\0';
-	/* aply format */
+	{
+		for (; *(format + index); index++)
+		{
+			if (*(format + index) > '0' && *(format + index) <= '9')
+				p = 1;
+			if (*(format + index) >= '0' && *(format + index) <= '9')
+			{
+				num = num * 10 + (*(format + index) - '0');
+			}
+			else if (p == 1)
+			{
+				break;
+			}
+		}
+		diferencia = num - _strlen(argument);
+		if (diferencia > 0)
+		{
+			for (index = 0; index < diferencia; index++)
+			{
+				_strncat(sbuffer, " ", 10024);
+			}
+		}
+		_strncat(sbuffer, argument, 10024);
+	}
 	return (sbuffer);
 }
 

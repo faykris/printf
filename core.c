@@ -56,7 +56,7 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 			if (ptr_2_p[index] == val_chars[index_val])
 			{
 				if (!id_sec)
-				{	format[index_val] = '1';
+				{    format[index_val] = '1';
 					break;
 				}
 			}
@@ -72,11 +72,11 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 				format[index_buffer++] = '.';
 				id_sec = 1;
 				has_point = 1;
-			}	else if (('0' <= ptr_2_p[index] && ptr_2_p[index] <= '9') ||
-				 ptr_2_p[index] == 'h' || ptr_2_p[index] == 'l')
-			{	id_sec = 1;
+			}    else if (('0' <= ptr_2_p[index] && ptr_2_p[index] <= '9') ||
+				      ptr_2_p[index] == 'h' || ptr_2_p[index] == 'l')
+			{    id_sec = 1;
 				format[index_buffer++] = ptr_2_p[index];
-			}	else
+			}    else
 			{
 				return (NULL);
 			}
@@ -87,7 +87,6 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 
 	return (format);
 }
-
 
 /**
  * select_func - Select fuctions depending data type
