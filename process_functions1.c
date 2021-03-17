@@ -2,7 +2,7 @@
 
 /**
  * process_string - process the s format identifier
- * and copy it in secondary buffer
+ * and copy it in secondary buffer.
  *
  * @sbuffer: buffer to be filled with arg
  * @format: format to be aplied in buffer before return it.
