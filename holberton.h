@@ -15,7 +15,7 @@ int find_format(char *ptr_to_percent, va_list param_list, char *buffer);
 /* core.c*/
 void append_arg(char *, char *, char, va_list);
 
-char *get_format(char *ptr_to_percent, char *format, int index_spc, int *);
+char *get_format(char *ptr_to_percent, char *format, int index_spc);
 
 char *(*select_func(char specifier))(char *, char *, va_list);
 
@@ -56,8 +56,6 @@ char *process_uns_int(char *sbuffer, char *format, va_list param_list);
 char *process_octal(char *sbuffer, char *format, va_list param_list);
 
 char *process_hex(char *sbuffer, char *format, va_list param_list);
-
-char *process_float(char *sbuffer, char *format, va_list param_list);
 
 char *process_pointer(char *sbuffer, char *format, va_list param_list);
 

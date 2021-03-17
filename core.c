@@ -38,25 +38,23 @@ void append_arg(char *buffer, char *format, char sp_char, va_list param_list)
 /**
  * get_format - clear value of format
  *
- * @ptr_to_percent: pointer with percent
+ * @ptr_2_p: pointer with percent
  * @format: pointer buffer format
  * @index_spc: integer indicates special character
- * @indexFallo: integer indicate where it fail
  *
  * Return: pointer to format buffer
  */
-char *get_format(char *ptr_to_percent, char *format,
-	int index_spc, int *indexFallo)
+char *get_format(char *ptr_2_p, char *format, int index_spc)
 {
-	int index, index_buffer = 4, id_sec = 0, has_point = 0, index_val;
-	char val_chars[] = "-+ 0";
+	int index, index_buffer = 5, id_sec = 0, has_point = 0, index_val;
+	char val_chars[] = "-+ 0#";
 
-	format[0] = format[1] = format[2] = format[3] = '0';
+	format[0] = format[1] = format[2] = format[3] = format[4] = '0';
 	for (index = 1; index < index_spc; index++)
 	{
 		for (index_val = 0; val_chars[index_val]; index_val++)
 		{
-			if (ptr_to_percent[index] == val_chars[index_val])
+			if (ptr_2_p[index] == val_chars[index_val])
 			{
 				if (!id_sec)
 				{	format[index_val] = '1';
@@ -64,27 +62,28 @@ char *get_format(char *ptr_to_percent, char *format,
 				}
 			}
 		}
-		if (index_val > 3)
+		if (index_val > 4)
 		{
-			if (ptr_to_percent[index] == '.')
+			if (ptr_2_p[index] == '.')
 			{
 				if (has_point)
-				{*indexFallo = index;
+				{
 					return (NULL);
 				}
 				format[index_buffer++] = '.';
 				id_sec = 1;
 				has_point = 1;
-			}	else if ('0' <= ptr_to_percent[index] && ptr_to_percent[index] <= '9')
+			}	else if (('0' <= ptr_2_p[index] && ptr_2_p[index] <= '9') ||
+				 ptr_2_p[index] == 'h' || ptr_2_p[index] == 'l')
 			{	id_sec = 1;
-				format[index_buffer++] = ptr_to_percent[index];
+				format[index_buffer++] = ptr_2_p[index];
 			}	else
-			{	*indexFallo = index;
+			{
 				return (NULL);
 			}
 		}
 	}
-	format[index_buffer++] = ptr_to_percent[index_spc];
+	format[index_buffer++] = ptr_2_p[index_spc];
 	format[index_buffer] = '\0';
 	return (format);
 }
@@ -106,7 +105,6 @@ char *(*select_func(char specifier))(char *, char *, va_list)
 		{'i', process_int},
 		{'b', process_binary},
 		{'S', process_custom_string},
-		{'f', process_float},
 		{'p', process_pointer},
 		{'x', process_hex},
 		{'X', process_hex},
