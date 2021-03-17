@@ -48,7 +48,7 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 	char val_chars[] = "-+ 0#";
 
 	for (index_val = 0; val_chars[index_val]; index_val++)
-		format[index_val] = 0;
+		format[index_val] = '0';
 	for (index = 1; index < index_spc; index++)
 	{
 		for (index_val = 0; val_chars[index_val]; index_val++)
@@ -84,6 +84,7 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 	}
 	format[index_buffer++] = ptr_2_p[index_spc];
 	format[index_buffer] = '\0';
+
 	return (format);
 }
 
