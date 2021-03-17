@@ -50,7 +50,7 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
  * process_char - process the c format identifier
  * and copy it in secondary buffer.
  *
- * @sbuffer: buffer to be filled with arg
+ * @sbuffer: buffer to be filled with arg.
  * @format: format to be aplied in buffer before return it.
  * @param_list: list of arguments
  *
