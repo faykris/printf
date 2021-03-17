@@ -72,7 +72,7 @@ char *get_format(char *ptr_2_p, char *format, int index_spc)
 				format[index_buffer++] = '.';
 				id_sec = 1;
 				has_point = 1;
-			}    else if (('0' <= ptr_2_p[index] && ptr_2_p[index] <= '9')||
+			}    else if (('0' <= ptr_2_p[index] && ptr_2_p[index] <= '9') ||
 				      ptr_2_p[index] == 'h' || ptr_2_p[index] == 'l')
 			{    id_sec = 1;
 				format[index_buffer++] = ptr_2_p[index];

@@ -14,7 +14,6 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
 {
 	int index = 5, num = 0, diferencia = 0;
 	int p = 0;
-	char num_str[1024] = "\0";
 	char *argument = va_arg(param_list, char *);
 
 	if (argument == NULL)
