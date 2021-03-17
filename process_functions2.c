@@ -15,7 +15,7 @@ char *process_hex(char *sbuffer, char *format, va_list param_list)
 
 	if (format[len_format - 2] == 'l')
 	{
-		unsigned long argument1 = va_arg(param_list, unsigned int);
+		unsigned long argument1 = va_arg(param_list, unsigned long);
 
 		argument = argument1;
 	}
@@ -32,9 +32,13 @@ char *process_hex(char *sbuffer, char *format, va_list param_list)
 		argument = argument3;
 	}
 
-
 	dec_converter(argument, sbuffer, 16);
-
+	if (format[4] == '1')
+	{
+		rev_string(sbuffer);
+		_strncat(sbuffer, "x0", 1024);
+		rev_string(sbuffer);
+	}
 	if (format[len_format - 1] == 'X')
 		string_toupper(sbuffer);
 
@@ -79,23 +83,25 @@ char *process_pointer(char *sbuffer, char *format, va_list param_list)
 char *process_uns_int(char *sbuffer, char *format, va_list param_list)
 {
 	int len_format = _strlen(format);
-	unsigned int number;
+	unsigned long number;
 	unsigned long argument1;
 	unsigned short argument2;
+	unsigned int argument3;
 
 	if (format[len_format - 2] == 'l')
 	{
-		argument1 = va_arg(param_list, unsigned int);
+		argument1 = va_arg(param_list,  unsigned long);
 		number = argument1;
 	}
 	else if (format[len_format - 2] == 'h')
 	{
-		argument2 = va_arg(param_list, unsigned int);
+		argument2 = va_arg(param_list, int);
 		number = argument2;
 	}
 	else
 	{
-		number = va_arg(param_list, unsigned int);
+		argument3 = va_arg(param_list, unsigned int);
+		number = argument3;
 	}
 
 	dec_converter_uns(number, sbuffer, 10);
@@ -114,13 +120,14 @@ char *process_uns_int(char *sbuffer, char *format, va_list param_list)
 char *process_octal(char *sbuffer, char *format, va_list param_list)
 {
 	int len_format = _strlen(format);
-	unsigned int number;
+	unsigned long number;
 	unsigned long argument1;
 	unsigned short argument2;
+	unsigned int argument3;
 
 	if (format[len_format - 2] == 'l')
 	{
-		argument1 = va_arg(param_list, unsigned int);
+		argument1 = va_arg(param_list, unsigned long);
 		number = argument1;
 	}
 	else if (format[len_format - 2] == 'h')
@@ -130,11 +137,18 @@ char *process_octal(char *sbuffer, char *format, va_list param_list)
 	}
 	else
 	{
-		number = va_arg(param_list, unsigned int);
+		argument3 = va_arg(param_list, unsigned int);
+		number = argument3;
 	}
 
-
 	dec_converter_uns(number, sbuffer, 8);
+
+	if (format[4] == '1')
+	{
+		rev_string(sbuffer);
+		_strncat(sbuffer, "0", 1024);
+		rev_string(sbuffer);
+	}
 
 	return (sbuffer);
 }
