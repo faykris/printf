@@ -36,6 +36,8 @@ String value
 Char value
 .IP %r
 Reverse value
+.IP %R
+Rot13 string value
 .IP %d
 Integer value
 .IP %i
