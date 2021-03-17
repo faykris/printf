@@ -36,8 +36,6 @@ String value
 Char value
 .IP %r
 Reverse value
-.IP %c
-Char value
 .IP %d
 Integer value
 .IP %u
