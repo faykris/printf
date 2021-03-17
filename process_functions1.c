@@ -12,20 +12,24 @@
  */
 char *process_string(char *sbuffer, char *format, va_list param_list)
 {
-	int index = 0, index_num = 0, mag_num = 1, num = 0, diferencia = 0;
-	char num_str[1024];
+	int index = 5, index_num = 0, mag_num = 1, num = 0, diferencia = 0;
+	int p = 0;
+	char num_str[1024] = "";
 	char *argument = va_arg(param_list, char *);
 
+	printf("%s", format);
 	if (argument == NULL)
 		_strncat(sbuffer, "(null)", 10240);
 	else
 	{
 		printf("uno\n");
-		for (index; format[index]; index++)
+		for (; (format + index); index++)
 		{
-			if (format[index] >= 0 || format[index] <= 9)
+			if ((format + index) > '0' && (format + index) <= '9')
+				p = 1;
+			if ((format + index) >= '0' && *(format + index) <= '9' && p)
 			{
-				num_str[index_num] = format[index];
+				num_str[index_num] = *(format + index);
 				index_num++;
 				mag_num *= 10;
 			}
