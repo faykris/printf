@@ -1,5 +1,5 @@
 ./" This is the manage of _printf function
-.TH _PRINTF "V1.0" "2021-03-15" "_PRINTF" "_printf Function Manual"
+.TH _PRINTF "V1.0" "2021-03-15" "GNU" "_printf Function Manual"
 
 .SH NAME
 _printf
