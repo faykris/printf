@@ -79,7 +79,6 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 		argumen3 = va_arg(param_list, long);
 		number = argumen3;
 	}
-	_width(sbuffer, format, (char *)number);
 	if (number < 0)
 		sbuffer[0] = '-';
 	dec_converter(number, sbuffer, 10);
@@ -93,6 +92,7 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 		sbuffer[_strlen(sbuffer)] = ' ';
 		rev_string(sbuffer);
 	}
+	_width(sbuffer, format, (char *)number);
 	return (sbuffer);
 }
 

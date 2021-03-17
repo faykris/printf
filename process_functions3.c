@@ -93,7 +93,21 @@ void _width(char *sbuffer, char *format, char *argument)
 	{
 		for (index = 0; index < diferencia; index++)
 		{
-			_strncat(sbuffer, " ", 10024);
+			if (*(format) == 1)
+				_strncat(sbuffer, " ", 10024);
+			else
+			{
+				rev_string(sbuffer);
+				if(*(format + 3) == 1)
+				{
+					_strncat(sbuffer, "0", 10024);
+				}
+				else
+				{
+					_strncat(sbuffer, " ", 10024);
+				}
+				rev_string(sbuffer);
+			}
 		}
 	}
 }
