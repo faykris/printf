@@ -34,6 +34,10 @@ FORMAT operators used in this function (some of them are not included in the ori
 String value
 .IP %c
 Char value
+.IP %r
+Reverse value
+.IP %c
+Char value
 .IP %d
 Integer value
 .IP %u
