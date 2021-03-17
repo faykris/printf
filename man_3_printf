@@ -38,6 +38,8 @@ Char value
 Reverse value
 .IP %d
 Integer value
+.IP %i
+Integer value
 .IP %u
 Unsigned integer value
 .IP %b
