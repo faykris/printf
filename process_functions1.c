@@ -59,7 +59,27 @@ char *process_char(char *sbuffer, char *format, va_list param_list)
  */
 char *process_int(char *sbuffer, char *format, va_list param_list)
 {
-	int number = va_arg(param_list, int);
+	int len_format = _strlen(format);
+	long number;
+	long argument1;
+	short argument2;
+	int argumen3;
+
+	if (format[len_format - 2] == 'l')
+	{
+		argument1 = va_arg(param_list, long);
+		number = argument1;
+	}
+	else if (format[len_format - 2] == 'h')
+	{
+		argument2 = va_arg(param_list, long);
+		number = argument2;
+	}
+	else
+	{
+		argumen3 = va_arg(param_list, long);
+		number = argumen3;
+	}
 
 	if (number < 0)
 		sbuffer[0] = '-';

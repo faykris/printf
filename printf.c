@@ -80,8 +80,7 @@ int find_format(char *ptr_2_p, va_list param_list, char *buffer)
 					exit(98);
 				}
 				format_buffer[0] = '\0';
-				fbc = get_format(ptr_2_p, format_buffer,
-					index_format, indexFallo);
+				fbc = get_format(ptr_2_p, format_buffer, index_format);
 				if (fbc == NULL)
 				{
 					free(format_buffer);
