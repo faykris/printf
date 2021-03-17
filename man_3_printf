@@ -36,8 +36,12 @@ String value
 Char value
 .IP %d
 Integer value
+.IP %u
+Unsigned integer value
 .IP %b
 Integer to Binary value
+.IP %o
+Integer to Octal value
 .IP %x
 Integer to Hexadecimal value (lowercase)
 .IP %X
