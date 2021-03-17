@@ -70,11 +70,12 @@ char *process_root13(char *sbuffer, char *format, va_list param_list)
  *
  * Return: None.
  */
-void _width(char *sbuffer, char *format, char *argument)
+void _width(char *sbuffer, char *format)
 {
 	int index = 5, num = 0, diferencia = 0;
 	int p = 0;
 
+	printf("CHekcpjifenkvhfnkdmpl,añl");
 	for (; *(format + index); index++)
 	{
 		if (*(format + index) > '0' && *(format + index) <= '9')
@@ -88,17 +89,22 @@ void _width(char *sbuffer, char *format, char *argument)
 			break;
 		}
 	}
-	diferencia = num - _strlen(argument);
+	diferencia = num - _strlen(buffer);
+	printf("%d", diferencia);
+	printf("\n---------------------------------------------\n");
 	if (diferencia > 0)
 	{
+		printf("Checkpoint 1");
 		for (index = 0; index < diferencia; index++)
 		{
-			if (*(format) == 1)
+			printf("%s", format);
+			if (*(format) == '1')
 				_strncat(sbuffer, " ", 10024);
 			else
 			{
+				printf("%d", diferencia);
 				rev_string(sbuffer);
-				if(*(format + 3) == 1)
+				if (*(format + 3) == '1')
 				{
 					_strncat(sbuffer, "0", 10024);
 				}

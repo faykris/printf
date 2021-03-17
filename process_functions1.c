@@ -18,8 +18,9 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
 		_strncat(sbuffer, "(null)", 10240);
 	else
 	{
-		_width(sbuffer, format, argument);
 		_strncat(sbuffer, argument, 10024);
+		*(format) = '0';
+		_width(sbuffer, format);
 	}
 	return (sbuffer);
 }
@@ -92,7 +93,7 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 		sbuffer[_strlen(sbuffer)] = ' ';
 		rev_string(sbuffer);
 	}
-	_width(sbuffer, format, (char *)number);
+	_width(sbuffer, format);
 	return (sbuffer);
 }
 
