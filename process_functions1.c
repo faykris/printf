@@ -16,7 +16,6 @@ char *process_string(char *sbuffer, char *format, va_list param_list)
 	char num_str[1024];
 	char *argument = va_arg(param_list, char *);
 
-	printf("%s", format);
 	if (argument == NULL)
 		_strncat(sbuffer, "(null)", 10240);
 	else
