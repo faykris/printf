@@ -60,3 +60,40 @@ char *process_root13(char *sbuffer, char *format, va_list param_list)
 
 	return (sbuffer);
 }
+
+
+/**
+ * _width - adds width to the data.
+ * @sbuffer: buffer to be filled with arg
+ * @format: format to be aplied in buffer before return it.
+ * @argument: list of arguments
+ *
+ * Return: None.
+ */
+void _width(char *sbuffer, char *format, char *argument)
+{
+	int index = 5, num = 0, diferencia = 0;
+	int p = 0;
+
+	for (; *(format + index); index++)
+	{
+		if (*(format + index) > '0' && *(format + index) <= '9')
+			p = 1;
+		if (*(format + index) >= '0' && *(format + index) <= '9')
+		{
+			num = num * 10 + (*(format + index) - '0');
+		}
+		else if (p == 1)
+		{
+			break;
+		}
+	}
+	diferencia = num - _strlen(argument);
+	if (diferencia > 0)
+	{
+		for (index = 0; index < diferencia; index++)
+		{
+			_strncat(sbuffer, " ", 10024);
+		}
+	}
+}

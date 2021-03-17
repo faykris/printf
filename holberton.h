@@ -65,6 +65,8 @@ char *process_reverse(char *sbuffer, char *format, va_list param_list);
 
 char *process_root13(char *sbuffer, char *format, va_list param_list);
 
+void _width(char *sbuffer, char *format, char *argument);
+
 
 /**
  * struct cp_func - structure holds data type and pointer.

@@ -12,35 +12,13 @@
  */
 char *process_string(char *sbuffer, char *format, va_list param_list)
 {
-	int index = 5, num = 0, diferencia = 0;
-	int p = 0;
 	char *argument = va_arg(param_list, char *);
 
 	if (argument == NULL)
 		_strncat(sbuffer, "(null)", 10240);
 	else
 	{
-		for (; *(format + index); index++)
-		{
-			if (*(format + index) > '0' && *(format + index) <= '9')
-				p = 1;
-			if (*(format + index) >= '0' && *(format + index) <= '9')
-			{
-				num = num * 10 + (*(format + index) - '0');
-			}
-			else if (p == 1)
-			{
-				break;
-			}
-		}
-		diferencia = num - _strlen(argument);
-		if (diferencia > 0)
-		{
-			for (index = 0; index < diferencia; index++)
-			{
-				_strncat(sbuffer, " ", 10024);
-			}
-		}
+		_width(sbuffer, format, argument);
 		_strncat(sbuffer, argument, 10024);
 	}
 	return (sbuffer);
@@ -101,7 +79,7 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 		argumen3 = va_arg(param_list, long);
 		number = argumen3;
 	}
-
+	_width(sbuffer, format, (char *)number);
 	if (number < 0)
 		sbuffer[0] = '-';
 	dec_converter(number, sbuffer, 10);
