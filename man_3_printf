@@ -8,9 +8,7 @@ _printf
 .PP
 .B	#include \(dqholberton.h\(dq
 .PP
-.B int _printf(const char 
-.I *format
-, ...);
+.B int _printf(const char *format, ...);
 
 .SH DESCRIPTION
 This function prints ARGUMENTS according to FORMAT
