@@ -48,6 +48,8 @@ Integer to Octal value
 Integer to Hexadecimal value (lowercase)
 .IP %X
 Integer to Hexadecimal value (uppercase)
+.IP %p
+Memory address value
 
 .SH RETURN VALUE
 Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
