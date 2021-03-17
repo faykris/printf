@@ -5,11 +5,12 @@
 _printf
 
 .SH SYNOPSIS
-Main function prototype:
 .PP
-.B		#include "holberton.h"
+.B	#include \(dqholberton.h\(dq
 .PP
-.B 	int _printf(const char *format, ...);
+.B int _printf(const char 
+.I *format
+, ...);
 
 .SH DESCRIPTION
 This function prints ARGUMENTS according to FORMAT
@@ -30,7 +31,7 @@ vertical tab
 .IP %%
 a single %
 .PP
-FORMAT operators used in this function, some of them are not included in the original printf.
+FORMAT operators used in this function (some of them are not included in the original printf).
 .IP %s
 String value
 .IP %c
@@ -52,7 +53,7 @@ The following examples are according the different types of formats defined for 
 
 .I PRINT A STRING WITH 2 VARIABLES
 .PP
-.B #include "holberton.h"
+.B #include \(dqholberton.h\(dq
 .PP
 .B int main()
 .PP
