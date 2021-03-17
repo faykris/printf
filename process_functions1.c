@@ -63,9 +63,17 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 
 	if (number < 0)
 		sbuffer[0] = '-';
-	format[0] = '\0';
 	dec_converter(number, sbuffer, 10);
-
+	if (number >= 0 && (*(format + 1) == '1'))
+	{
+		sbuffer[_strlen(sbuffer)] = '+';
+		rev_string(sbuffer);
+	}
+	else if (number >= 0 && (*(format + 2) == '1'))
+	{
+		sbuffer[_strlen(sbuffer)] = ' ';
+		rev_string(sbuffer);
+	}
 	return (sbuffer);
 }
 
