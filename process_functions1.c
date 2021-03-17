@@ -83,17 +83,20 @@ char *process_int(char *sbuffer, char *format, va_list param_list)
 
 	if (number < 0)
 		sbuffer[0] = '-';
+
 	dec_converter(number, sbuffer, 10);
-	if (number >= 0 && (*(format + 1) == '1'))
+	if (number >= 0)
 	{
-		sbuffer[_strlen(sbuffer)] = '+';
+		rev_string(sbuffer);
+		if (*(format + 1) == '1')
+			_strncat(sbuffer, "+", 1);
+
+		else if (*(format + 2) == '1')
+			_strncat(sbuffer, " ", 1);
+
 		rev_string(sbuffer);
 	}
-	else if (number >= 0 && (*(format + 2) == '1'))
-	{
-		sbuffer[_strlen(sbuffer)] = ' ';
-		rev_string(sbuffer);
-	}
+
 	return (sbuffer);
 }
 
