@@ -61,7 +61,7 @@ Upon successful return, these functions return the number of characters printed 
 .SH EXAMPLES
 The following examples are according the different types of formats defined for this function: 
 
-.I PRINT A STRING WITH 2 VARIABLES
+PRINT A STRING WITH 2 VARIABLES
 .PP
 .B #include \(dqholberton.h\(dq
 .PP
@@ -85,7 +85,7 @@ Output:
 
 Simply we are using two arrays strings for be printed replacing the %s operators.
 
-.I PRINT A INTEGER NUMBER
+PRINT A INTEGER NUMBER
 .PP
 .B #include "holberton.h"
 .PP
@@ -107,7 +107,7 @@ Output:
 
 We uses another format operator %d, the output shows that integer stored in the variable num1.
 
-.I PRINT INTEGER TO A HEXADECIMAL NUMBER
+PRINT INTEGER TO A HEXADECIMAL NUMBER
 .PP
 .B #include "holberton.h"
 .PP
