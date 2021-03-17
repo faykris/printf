@@ -6,7 +6,7 @@
  *
  * @sbuffer: buffer to be filled with arg.
  * @format: format to be aplied in buffer before return it.
- * @param_list: list of arguments
+ * @param_list: list of arguments.
  *
  * Return: pointer to secondary buffer.
  */
