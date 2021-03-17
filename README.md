@@ -93,22 +93,22 @@ Printing a integer 6 as 6
 
 ```
 We uses another identify format for the integer numbers that is %d, the output shows that integer stored in the variable num1 replacing the identify format.
-### Print a 1 decimal float number 
+### Print a decimal to octal number 
 ```C
 int main()
 {
-	float num2 = 6.5; 
+	int num2 = 25; 
 
-	_printf("Example4: Printing a float 6.5 as %.1f\n", num2);
+	_printf("Example4: Printing a octal of 25 as %o\n", num2);
 
 	return (0);
 }
 ```
 ```
-Example4: Printing a float 6.5 as 6.5
+Example4: Printing a octal of 25 as 31
 
 ```
-For the float value, we uses a point character followed by 1, this number indicates to print only one decimal value and followed by f, the float value is in the second parameter variable.
+We convert a decimal value to octal and replace the indetify format with the value stored in the variable num2.
 
 ### Print a char character
 ```C
@@ -165,10 +165,10 @@ Print a unsigned integer as a hexadecimal number, with %x lowercase prints the b
 Everything we need for the _printf function to execute correctly, we will show below:
 
 ### Header file
-We define a header file names ` "holberton.h"`  where puts the prototypes functions, include standard libraries to use and a struct that contains the different format types used in _printf function.
+We define a header file names `"holberton.h"` where puts the prototypes functions, include standard libraries to use and a struct that contains the different format types used in _printf function.
 
 #### Standard libraries
-For some proccess is neccessary use the standard libraries for example we use the write fuction across the `<unistd.h>` library.
+For some proccess is neccessary use the standard libraries for example we use the `write` function across the `<unistd.h>` library.
 
 #### Functions prototypes
 Small functions are necessary for realize some operations with the characters found in the process and are defined with their respective name, data type of parameters.
