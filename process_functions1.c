@@ -12,16 +12,42 @@
  */
 char *process_string(char *sbuffer, char *format, va_list param_list)
 {
-
+	int index = 0, index_num = 0, mag_num = 1, num = 0, diferencia = 0;
+	char num_str[1024];
 	char *argument = va_arg(param_list, char *);
 
+	printf("%s", format);
 	if (argument == NULL)
 		_strncat(sbuffer, "(null)", 10240);
 	else
-	_strncat(sbuffer, argument, 10024);
-
-	format[0] = '\0';
-	/* aply format */
+	{
+		printf("uno\n");
+		for (index; format[index]; index++)
+		{
+			if (format[index] >= 0 || format[index] <= 9)
+			{
+				num_str[index_num] = format[index];
+				index_num++;
+				mag_num *= 10;
+			}
+		}
+		rev_string(num_str);
+		printf("%s", num_str);
+		for (index = 0; index < index_num; index++)
+		{
+			num += mag_num * (int)num_str[index];
+			mag_num /= 10;
+		}
+		diferencia = num - _strlen(argument);
+		if (diferencia > 0)
+		{
+			for (index = 0; index < diferencia; index++)
+			{
+				_strncat(sbuffer, " ", 10024);
+			}
+		}
+		_strncat(sbuffer, argument, 10024);
+	}
 	return (sbuffer);
 }
 
